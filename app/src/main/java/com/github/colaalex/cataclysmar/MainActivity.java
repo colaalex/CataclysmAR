@@ -28,9 +28,12 @@ public class MainActivity extends AppCompatActivity {
 
     private static final float RADIUS = 0.1f;
     private float lat = 55.751244f;
+    //private float lat = 0f;
     private float lon = 37.618423f;
+    //private float lon = 0f;
 
     private Node pinNode;
+    private Renderable pinRenderable;
     private TransformableNode earth;
 
     private Renderable renderable;
@@ -67,17 +70,25 @@ public class MainActivity extends AppCompatActivity {
                     earth.setRenderable(renderable);
                     earth.select();
 
-                    double theta = toRadians(lat) + PI * 0.5;
-                    double phi = toRadians(lon) + PI;
-                    float x = (float) (RADIUS * sin(theta) * cos(phi));
-                    float y = (float) (RADIUS * sin(theta) * sin(phi));
-                    float z = (float) (RADIUS * cos(theta));
+                    double theta = toRadians(lat) + PI * 1.5;
+                    double phi = toRadians(lon) + PI * 0.5;
+                    float x = (float) (RADIUS * sin(theta) * sin(phi));
+                    float y = (float) (RADIUS + RADIUS * cos(theta));
+                    float z = (float) (RADIUS * sin(theta) * cos(phi));
 
                     pinNode = new Node();
                     ViewRenderable.builder()
                             .setView(this, R.layout.map_pin)
                             .build()
-                            .thenAccept(viewRenderable -> pinNode.setRenderable(viewRenderable));
+                            .thenAccept(viewRenderable -> {
+                                viewRenderable.setSizer(view -> new Vector3(0.1f, 0.1f, 0.1f));
+                                pinNode.setRenderable(viewRenderable);
+                            });
+//                    MaterialFactory.makeOpaqueWithColor(this, new Color(android.graphics.Color.RED))
+//                            .thenAccept(
+//                                    material -> pinRenderable =
+//                                            ShapeFactory.makeCube(new Vector3(0.2f, 0.2f, 0.2f), new Vector3(x, y, z), material));
+                    pinNode.setRenderable(pinRenderable);
                     pinNode.setParent(earth);
                     pinNode.setLocalPosition(new Vector3(x, y, z));
                 }
