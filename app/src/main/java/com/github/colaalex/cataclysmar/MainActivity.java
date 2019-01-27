@@ -2,6 +2,7 @@ package com.github.colaalex.cataclysmar;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.google.ar.core.Anchor;
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.d("Main", CSVWorker.getWildfires(getResources().openRawResource(R.raw.wfdset)).get(0).getLatitude());
 
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
 
@@ -90,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 //                                            ShapeFactory.makeCube(new Vector3(0.2f, 0.2f, 0.2f), new Vector3(x, y, z), material));
                     pinNode.setRenderable(pinRenderable);
                     pinNode.setParent(earth);
-                    pinNode.setLocalPosition(new Vector3(x, y, z));
+                    pinNode.setLocalPosition(new Vector3(x, y + 0.05f, z));
                 }
         );
     }
