@@ -1,33 +1,18 @@
 package com.github.colaalex.cataclysmar;
 
-import com.opencsv.bean.CsvBindByName;
-
 public class Wildfire {
-    @CsvBindByName
     private String latitude;
-    @CsvBindByName
     private String longitude;
-    @CsvBindByName
     private String brightness;
-    @CsvBindByName
     private String scan;
-    @CsvBindByName
     private String track;
-    @CsvBindByName
     private String acq_date;
-    @CsvBindByName
     private String acq_time;
-    @CsvBindByName
     private String satellite;
-    @CsvBindByName
     private String confidence;
-    @CsvBindByName
     private String version;
-    @CsvBindByName
     private String bright_t31;
-    @CsvBindByName
     private String frp;
-    @CsvBindByName
     private String daynight;
 
     public Wildfire(String latitude, String longitude, String brightness, String scan, String track, String acq_date, String acq_time, String satellite, String confidence, String version, String bright_t31, String frp, String daynight) {

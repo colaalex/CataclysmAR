@@ -20,6 +20,8 @@ import com.google.ar.sceneform.rendering.ViewRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
+import java.util.List;
+
 import static java.lang.Math.PI;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private float lon = 37.618423f;
     //private float lon = 0f;
 
-    private Node pinNode;
+    //private Node pinNode;
     private Renderable pinRenderable;
     private TransformableNode earth;
 
@@ -45,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.d("Main", CSVWorker.getWildfires(getResources().openRawResource(R.raw.wfdset)).get(0).getLatitude());
+        CSVWorker worker = new CSVWorker(getResources().openRawResource(R.raw.wfdset));
+        List<List<Float>> coordinates = worker.read();
 
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
 
@@ -73,27 +76,34 @@ public class MainActivity extends AppCompatActivity {
                     earth.setRenderable(renderable);
                     earth.select();
 
-                    double theta = toRadians(lat) + PI * 1.5;
-                    double phi = toRadians(lon) + PI * 0.5;
-                    float x = (float) (RADIUS * sin(theta) * sin(phi));
-                    float y = (float) (RADIUS + RADIUS * cos(theta));
-                    float z = (float) (RADIUS * sin(theta) * cos(phi));
+                    for (List<Float> pair :
+                            coordinates) {
+                        float lat = pair.get(0);
+                        float lon = pair.get(1);
 
-                    pinNode = new Node();
-                    ViewRenderable.builder()
-                            .setView(this, R.layout.map_pin)
-                            .build()
-                            .thenAccept(viewRenderable -> {
-                                viewRenderable.setSizer(view -> new Vector3(0.1f, 0.1f, 0.1f));
-                                pinNode.setRenderable(viewRenderable);
-                            });
+
+                        double theta = toRadians(lat) + PI * 1.5;
+                        double phi = toRadians(lon) + PI * 0.5;
+                        float x = (float) (RADIUS * sin(theta) * sin(phi));
+                        float y = (float) (RADIUS + RADIUS * cos(theta));
+                        float z = (float) (RADIUS * sin(theta) * cos(phi));
+
+                        Node pinNode = new Node();
+                        ViewRenderable.builder()
+                                .setView(this, R.layout.map_pin)
+                                .build()
+                                .thenAccept(viewRenderable -> {
+                                    viewRenderable.setSizer(view -> new Vector3(0.1f, 0.1f, 0.1f));
+                                    pinNode.setRenderable(viewRenderable);
+                                });
 //                    MaterialFactory.makeOpaqueWithColor(this, new Color(android.graphics.Color.RED))
 //                            .thenAccept(
 //                                    material -> pinRenderable =
 //                                            ShapeFactory.makeCube(new Vector3(0.2f, 0.2f, 0.2f), new Vector3(x, y, z), material));
-                    pinNode.setRenderable(pinRenderable);
-                    pinNode.setParent(earth);
-                    pinNode.setLocalPosition(new Vector3(x, y + 0.05f, z));
+                        pinNode.setRenderable(pinRenderable);
+                        pinNode.setParent(earth);
+                        pinNode.setLocalPosition(new Vector3(x, y + 0.05f, z));
+                    }
                 }
         );
     }
