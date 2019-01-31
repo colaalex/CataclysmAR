@@ -9,6 +9,8 @@ import java.util.List;
 
 public class CSVWorker {
 
+    //пока что тупо считывает из файла пять первых строк и добавляет их в список
+
     private InputStream inputStream;
 
     public CSVWorker(InputStream inputStream) {
