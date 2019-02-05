@@ -20,11 +20,26 @@ import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.AUSTRALI
 import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.AUSTRALIA_NORTH;
 import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.AUSTRALIA_SOUTH;
 import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.AUSTRALIA_WEST;
+import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.EURASIA_EAST;
+import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.EURASIA_NORTH;
+import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.EURASIA_SOUTH;
+import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.EURASIA_WEST;
+import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.NAMERICA_EAST;
+import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.NAMERICA_NORTH;
+import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.NAMERICA_SOUTH;
+import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.NAMERICA_WEST;
+import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.SAMERICA_EAST;
+import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.SAMERICA_NORTH;
+import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.SAMERICA_SOUTH;
+import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.SAMERICA_WEST;
 
 public class CSVWorker {
 
     private static final int AFRICA = 0;
     private static final int AUSTRALIA = 1;
+    private static final int EURASIA = 2;
+    private static final int NAMERICA = 3;
+    private static final int SAMERICA = 4;
 
     private InputStream inputStream;
 
@@ -37,6 +52,9 @@ public class CSVWorker {
 
         List<Wildfire> africanWildfires = new ArrayList<>();
         List<Wildfire> australianWildfires = new ArrayList<>();
+        List<Wildfire> eurasianWildfires = new ArrayList<>();
+        List<Wildfire> namericanWildfires = new ArrayList<>();
+        List<Wildfire> samericanWildfires = new ArrayList<>();
 
         List<List<Float>> coordinates = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -68,6 +86,15 @@ public class CSVWorker {
                         case AUSTRALIA:
                             australianWildfires.add(new Wildfire(lat, lon, Integer.parseInt(row[8].replaceAll("\\s", ""))));
                             break;
+                        case EURASIA:
+                            eurasianWildfires.add(new Wildfire(lat, lon, Integer.parseInt(row[8].replaceAll("\\s", ""))));
+                            break;
+                        case NAMERICA:
+                            namericanWildfires.add(new Wildfire(lat, lon, Integer.parseInt(row[8].replaceAll("\\s", ""))));
+                            break;
+                        case SAMERICA:
+                            samericanWildfires.add(new Wildfire(lat, lon, Integer.parseInt(row[8].replaceAll("\\s", ""))));
+                            break;
                         default:
                             break;
                     }
@@ -98,6 +125,24 @@ public class CSVWorker {
             return wildfire.getConfidence() < t1.getConfidence() ? -1 : 1;
         });
 
+        Collections.sort(eurasianWildfires, (wildfire, t1) -> {
+            if (wildfire.getConfidence() == t1.getConfidence())
+                return 0;
+            return wildfire.getConfidence() < t1.getConfidence() ? -1 : 1;
+        });
+
+        Collections.sort(namericanWildfires, (wildfire, t1) -> {
+            if (wildfire.getConfidence() == t1.getConfidence())
+                return 0;
+            return wildfire.getConfidence() < t1.getConfidence() ? -1 : 1;
+        });
+
+        Collections.sort(samericanWildfires, (wildfire, t1) -> {
+            if (wildfire.getConfidence() == t1.getConfidence())
+                return 0;
+            return wildfire.getConfidence() < t1.getConfidence() ? -1 : 1;
+        });
+
         for (int i = 0; i < 200 && i < africanWildfires.size(); i++) {
             List<Float> pair = new ArrayList<>();
             pair.add(africanWildfires.get(i).getLatitude());
@@ -109,6 +154,27 @@ public class CSVWorker {
             List<Float> pair = new ArrayList<>();
             pair.add(australianWildfires.get(i).getLatitude());
             pair.add(australianWildfires.get(i).getLongitutde());
+            coordinates.add(pair);
+        }
+
+        for (int i = 0; i < 400 && i < eurasianWildfires.size(); i++) {
+            List<Float> pair = new ArrayList<>();
+            pair.add(eurasianWildfires.get(i).getLatitude());
+            pair.add(eurasianWildfires.get(i).getLongitutde());
+            coordinates.add(pair);
+        }
+
+        for (int i = 0; i < 200 && i < namericanWildfires.size(); i++) {
+            List<Float> pair = new ArrayList<>();
+            pair.add(namericanWildfires.get(i).getLatitude());
+            pair.add(namericanWildfires.get(i).getLongitutde());
+            coordinates.add(pair);
+        }
+
+        for (int i = 0; i < 200 && i < samericanWildfires.size(); i++) {
+            List<Float> pair = new ArrayList<>();
+            pair.add(samericanWildfires.get(i).getLatitude());
+            pair.add(samericanWildfires.get(i).getLongitutde());
             coordinates.add(pair);
         }
 
@@ -124,6 +190,12 @@ public class CSVWorker {
             return AUSTRALIA;
         else if (lat >= AFRICA_SOUTH && lat <= AFRICA_NORTH && lon >= AFRICA_WEST && lon <= AFRICA_EAST)
             return AFRICA;
+        else if (lat >= EURASIA_SOUTH && lat <= EURASIA_NORTH && lon >= EURASIA_WEST && lon <= EURASIA_EAST)
+            return EURASIA;
+        else if (lat >= NAMERICA_SOUTH && lat <= NAMERICA_NORTH && lon >= NAMERICA_WEST && lon <= NAMERICA_EAST)
+            return NAMERICA;
+        else if (lat >= SAMERICA_SOUTH && lat <= SAMERICA_NORTH && lon >= SAMERICA_WEST && lon <= SAMERICA_EAST)
+            return SAMERICA;
         else
             return -1;
     }
