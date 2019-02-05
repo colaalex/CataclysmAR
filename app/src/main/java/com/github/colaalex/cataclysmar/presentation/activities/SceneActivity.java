@@ -1,4 +1,4 @@
-package com.github.colaalex.cataclysmar.presentation.scene;
+package com.github.colaalex.cataclysmar.presentation.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -106,7 +106,6 @@ public class SceneActivity extends AppCompatActivity {
                 coordinates) {
             float lat = pair.get(0);
             float lon = pair.get(1);
-
 
             double theta = toRadians(lat) + PI * 1.5;
             double phi = toRadians(lon) + PI * 0.5;
