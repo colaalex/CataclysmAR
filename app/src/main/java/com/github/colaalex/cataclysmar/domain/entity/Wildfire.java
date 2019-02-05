@@ -1,4 +1,4 @@
-package com.github.colaalex.cataclysmar;
+package com.github.colaalex.cataclysmar.domain.entity;
 
 public class Wildfire {
     private String latitude;

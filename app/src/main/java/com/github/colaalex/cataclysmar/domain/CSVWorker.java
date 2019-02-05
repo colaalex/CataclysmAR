@@ -1,4 +1,4 @@
-package com.github.colaalex.cataclysmar;
+package com.github.colaalex.cataclysmar.domain;
 
 import java.io.BufferedReader;
 import java.io.IOException;
