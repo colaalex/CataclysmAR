@@ -48,7 +48,6 @@ public class CSVWorker {
     }
 
     public List<List<Float>> read() {
-        //List<String[]> list = new ArrayList<>();
 
         List<Wildfire> africanWildfires = new ArrayList<>();
         List<Wildfire> australianWildfires = new ArrayList<>();
@@ -61,23 +60,12 @@ public class CSVWorker {
 
         try {
             String line;
-            //int i = 0;
             while ((line = reader.readLine()) != null) {
-                //i++;
                 String[] row = line.split(",");
-                //list.add(row);
                 try {
-                    List<Float> pair = new ArrayList<>();
 
                     float lat = Float.parseFloat(row[0]);
                     float lon = Float.parseFloat(row[1]);
-
-//                    if (lat >= AUSTRALIA_SOUTH && lat <= AUSTRALIA_NORTH && lon >= AUSTRALIA_WEST && lon <= AUSTRALIA_EAST) {
-//                        pair.add(lat);
-//                        pair.add(lon);
-//                        coordinates.add(pair);
-//                        wildfires.add(new Wildfire(lat, lon, Integer.parseInt(row[8])));
-//                    }
 
                     switch (determineContinent(lat, lon)) {
                         case AFRICA:

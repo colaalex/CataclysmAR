@@ -2,6 +2,7 @@ package com.github.colaalex.cataclysmar.presentation.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.github.colaalex.cataclysmar.R;
@@ -34,12 +35,8 @@ public class SceneActivity extends AppCompatActivity {
     private static final float RADIUS = 0.1f;
     private static final float LIFT = 0.15f;
 
-    //private float lat = 55.751244f;
-    //private float lon = 37.618423f;
-
     private Renderable pinRenderable;
     private TransformableNode earth;
-
     private Renderable earthRenderable;
     private ArFragment arFragment;
     private Scene scene;
@@ -99,21 +96,31 @@ public class SceneActivity extends AppCompatActivity {
     }
 
     private void setupPins() {
-        CSVWorker worker = new CSVWorker(getResources().openRawResource(R.raw.wfdset));
-        List<List<Float>> coordinates = worker.read();
 
-        for (List<Float> pair :
-                coordinates) {
-            float lat = pair.get(0);
-            float lon = pair.get(1);
+        Log.d("Setup Pins", "Method started");
 
-            double theta = toRadians(lat) + PI * 1.5;
-            double phi = toRadians(lon) + PI * 0.5;
-            float x = (float) (RADIUS * sin(theta) * sin(phi));
-            float y = (float) (RADIUS + RADIUS * cos(theta));
-            float z = (float) (RADIUS * sin(theta) * cos(phi));
+        new Thread(() -> {
+            Log.d("Setup Pins Run", "Started inner method");
+            CSVWorker worker = new CSVWorker(getResources().openRawResource(R.raw.wfdset));
+            List<List<Float>> coordinates = worker.read();
 
-            setupPin(x, y, z, lat, lon);
-        }
+            for (List<Float> pair :
+                    coordinates) {
+                float lat = pair.get(0);
+                float lon = pair.get(1);
+
+                double theta = toRadians(lat) + PI * 1.5;
+                double phi = toRadians(lon) + PI * 0.5;
+                float x = (float) (RADIUS * sin(theta) * sin(phi));
+                float y = (float) (RADIUS + RADIUS * cos(theta));
+                float z = (float) (RADIUS * sin(theta) * cos(phi));
+
+                runOnUiThread(() -> setupPin(x, y, z, lat, lon));
+
+            }
+            Log.d("Setup Pins Run", "Finished inner method");
+        }).start();
+
+        Log.d("Setup Pins", "Method ended");
     }
 }
