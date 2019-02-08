@@ -1,6 +1,6 @@
 package com.github.colaalex.cataclysmar.domain;
 
-import android.util.Log;
+import android.util.SparseArray;
 
 import com.github.colaalex.cataclysmar.domain.entity.Wildfire;
 
@@ -49,11 +49,9 @@ public class CSVWorker {
 
     public List<List<Float>> read() {
 
-        List<Wildfire> africanWildfires = new ArrayList<>();
-        List<Wildfire> australianWildfires = new ArrayList<>();
-        List<Wildfire> eurasianWildfires = new ArrayList<>();
-        List<Wildfire> namericanWildfires = new ArrayList<>();
-        List<Wildfire> samericanWildfires = new ArrayList<>();
+        SparseArray<List<Wildfire>> wildfires = new SparseArray<>(5);
+        for (int i = 0; i < 5; i++)
+            wildfires.append(i, new ArrayList<>());
 
         List<List<Float>> coordinates = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -67,26 +65,11 @@ public class CSVWorker {
                     float lat = Float.parseFloat(row[0]);
                     float lon = Float.parseFloat(row[1]);
 
-                    switch (determineContinent(lat, lon)) {
-                        case AFRICA:
-                            africanWildfires.add(new Wildfire(lat, lon, Integer.parseInt(row[8].replaceAll("\\s", ""))));
-                            break;
-                        case AUSTRALIA:
-                            australianWildfires.add(new Wildfire(lat, lon, Integer.parseInt(row[8].replaceAll("\\s", ""))));
-                            break;
-                        case EURASIA:
-                            eurasianWildfires.add(new Wildfire(lat, lon, Integer.parseInt(row[8].replaceAll("\\s", ""))));
-                            break;
-                        case NAMERICA:
-                            namericanWildfires.add(new Wildfire(lat, lon, Integer.parseInt(row[8].replaceAll("\\s", ""))));
-                            break;
-                        case SAMERICA:
-                            samericanWildfires.add(new Wildfire(lat, lon, Integer.parseInt(row[8].replaceAll("\\s", ""))));
-                            break;
-                        default:
-                            break;
-                    }
+                    int cont = determineContinent(lat, lon);
 
+                    if (cont != -1) {
+                        wildfires.get(cont).add(new Wildfire(lat, lon, Integer.parseInt(row[8].replaceAll("\\s", ""))));
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -101,74 +84,20 @@ public class CSVWorker {
             }
         }
 
-        Collections.sort(africanWildfires, (wildfire, t1) -> {
-            if (wildfire.getConfidence() == t1.getConfidence())
-                return 0;
-            return wildfire.getConfidence() < t1.getConfidence() ? -1 : 1;
-        });
-
-        Collections.sort(australianWildfires, (wildfire, t1) -> {
-            if (wildfire.getConfidence() == t1.getConfidence())
-                return 0;
-            return wildfire.getConfidence() < t1.getConfidence() ? -1 : 1;
-        });
-
-        Collections.sort(eurasianWildfires, (wildfire, t1) -> {
-            if (wildfire.getConfidence() == t1.getConfidence())
-                return 0;
-            return wildfire.getConfidence() < t1.getConfidence() ? -1 : 1;
-        });
-
-        Collections.sort(namericanWildfires, (wildfire, t1) -> {
-            if (wildfire.getConfidence() == t1.getConfidence())
-                return 0;
-            return wildfire.getConfidence() < t1.getConfidence() ? -1 : 1;
-        });
-
-        Collections.sort(samericanWildfires, (wildfire, t1) -> {
-            if (wildfire.getConfidence() == t1.getConfidence())
-                return 0;
-            return wildfire.getConfidence() < t1.getConfidence() ? -1 : 1;
-        });
-
-        for (int i = 0; i < 200 && i < africanWildfires.size(); i++) {
-            List<Float> pair = new ArrayList<>();
-            pair.add(africanWildfires.get(i).getLatitude());
-            pair.add(africanWildfires.get(i).getLongitutde());
-            coordinates.add(pair);
+        for (int i = 0; i < 5; i++) {
+            int len = i != EURASIA ? 200 : 400; // сколько элементов максимум может быть у одного континента
+            Collections.sort(wildfires.get(i), ((wildfire, t1) -> {
+                if (wildfire.getConfidence() == t1.getConfidence())
+                    return 0;
+                return wildfire.getConfidence() < t1.getConfidence() ? -1 : 1;
+            }));
+            for (int j = 0; j < len; j++) {
+                List<Float> pair = new ArrayList<>();
+                pair.add(wildfires.get(i).get(j).getLatitude());
+                pair.add(wildfires.get(i).get(j).getLongitutde());
+                coordinates.add(pair);
+            }
         }
-
-        for (int i = 0; i < 200 && i < australianWildfires.size(); i++) {
-            List<Float> pair = new ArrayList<>();
-            pair.add(australianWildfires.get(i).getLatitude());
-            pair.add(australianWildfires.get(i).getLongitutde());
-            coordinates.add(pair);
-        }
-
-        for (int i = 0; i < 400 && i < eurasianWildfires.size(); i++) {
-            List<Float> pair = new ArrayList<>();
-            pair.add(eurasianWildfires.get(i).getLatitude());
-            pair.add(eurasianWildfires.get(i).getLongitutde());
-            coordinates.add(pair);
-        }
-
-        for (int i = 0; i < 200 && i < namericanWildfires.size(); i++) {
-            List<Float> pair = new ArrayList<>();
-            pair.add(namericanWildfires.get(i).getLatitude());
-            pair.add(namericanWildfires.get(i).getLongitutde());
-            coordinates.add(pair);
-        }
-
-        for (int i = 0; i < 200 && i < samericanWildfires.size(); i++) {
-            List<Float> pair = new ArrayList<>();
-            pair.add(samericanWildfires.get(i).getLatitude());
-            pair.add(samericanWildfires.get(i).getLongitutde());
-            coordinates.add(pair);
-        }
-
-        Log.d("Africa length: ", String.valueOf(africanWildfires.size()));
-        Log.d("Australia length: ", String.valueOf(australianWildfires.size()));
-        Log.d("Coordiantes length: ", String.valueOf(coordinates.size()));
 
         return coordinates;
     }
