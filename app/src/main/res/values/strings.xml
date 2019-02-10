@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Cataclysm AR</string>
+    <string name="head_title">Интерактивная карта катастроф</string>
+    <string name="region">Регион</string>
+    <string name="time_period">Временной интервал</string>
+    <string name="day">Сутки</string>
+    <string name="week">Неделя</string>
+    <string name="month">Месяц</string>
+    <string name="disaster">Стихийное бедствие</string>
+    <string name="fire">Пожар</string>
+    <string name="quake">Землетрясение</string>
+    <string name="start">Начать</string>
+    <string-array name="regions_array">
+        <item>Весь мир</item>
+    </string-array>
 </resources>

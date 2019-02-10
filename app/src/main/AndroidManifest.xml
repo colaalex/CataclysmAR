@@ -3,6 +3,7 @@
     package="com.github.colaalex.cataclysmar">
 
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera.ar" />
 
     <application
@@ -12,8 +13,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="com.google.ar.core" android:value="required" />
-        <activity android:name=".presentation.activities.SceneActivity">
+        <activity android:name=".activities.StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="required" />
+
+        <activity android:name=".activities.SceneActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
