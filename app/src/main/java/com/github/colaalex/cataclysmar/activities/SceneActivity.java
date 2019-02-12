@@ -1,7 +1,6 @@
 package com.github.colaalex.cataclysmar.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 
@@ -24,6 +23,8 @@ import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import static java.lang.Math.PI;
 import static java.lang.Math.cos;
