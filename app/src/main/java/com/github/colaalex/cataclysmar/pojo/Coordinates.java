@@ -1,4 +1,4 @@
-package com.github.colaalex.cataclysmar.domain.entity;
+package com.github.colaalex.cataclysmar.pojo;
 
 public class Coordinates {
     public static final float AFRICA_NORTH = 37.34f;

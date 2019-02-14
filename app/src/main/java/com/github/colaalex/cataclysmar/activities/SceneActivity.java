@@ -5,7 +5,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 
 import com.github.colaalex.cataclysmar.R;
-import com.github.colaalex.cataclysmar.domain.CSVWorker;
+import com.github.colaalex.cataclysmar.workers.CSVWorker;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
 import com.google.ar.core.Plane;

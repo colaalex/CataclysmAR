@@ -1,8 +1,8 @@
-package com.github.colaalex.cataclysmar.domain;
+package com.github.colaalex.cataclysmar.workers;
 
 import android.util.SparseArray;
 
-import com.github.colaalex.cataclysmar.domain.entity.Wildfire;
+import com.github.colaalex.cataclysmar.pojo.Wildfire;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,26 +12,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.AFRICA_EAST;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.AFRICA_NORTH;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.AFRICA_SOUTH;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.AFRICA_WEST;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.AUSTRALIA_EAST;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.AUSTRALIA_NORTH;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.AUSTRALIA_SOUTH;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.AUSTRALIA_WEST;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.EURASIA_EAST;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.EURASIA_NORTH;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.EURASIA_SOUTH;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.EURASIA_WEST;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.NAMERICA_EAST;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.NAMERICA_NORTH;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.NAMERICA_SOUTH;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.NAMERICA_WEST;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.SAMERICA_EAST;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.SAMERICA_NORTH;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.SAMERICA_SOUTH;
-import static com.github.colaalex.cataclysmar.domain.entity.Coordinates.SAMERICA_WEST;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.AFRICA_EAST;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.AFRICA_NORTH;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.AFRICA_SOUTH;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.AFRICA_WEST;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.AUSTRALIA_EAST;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.AUSTRALIA_NORTH;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.AUSTRALIA_SOUTH;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.AUSTRALIA_WEST;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.EURASIA_EAST;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.EURASIA_NORTH;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.EURASIA_SOUTH;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.EURASIA_WEST;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.NAMERICA_EAST;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.NAMERICA_NORTH;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.NAMERICA_SOUTH;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.NAMERICA_WEST;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.SAMERICA_EAST;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.SAMERICA_NORTH;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.SAMERICA_SOUTH;
+import static com.github.colaalex.cataclysmar.pojo.Coordinates.SAMERICA_WEST;
 
 public class CSVWorker {
 
