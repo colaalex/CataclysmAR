@@ -37,8 +37,6 @@ public class SceneActivity extends AppCompatActivity {
     private ArFragment arFragment;
     private Scene scene;
 
-    private int i = 1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +75,7 @@ public class SceneActivity extends AppCompatActivity {
     }
 
     private void setupPin(FirePin firePin) {
-        Log.d("Setup Pin", "Started drawing pin no. " + Integer.toString(i++));
+        Log.d("Setup Pin", "Started drawing pin");
 
         Node pinNode = new Node();
         float x = firePin.getX();
@@ -95,7 +93,7 @@ public class SceneActivity extends AppCompatActivity {
                         }
                 );
 
-        Log.d("Setup Pin", "Finished drawing pin no. " + Integer.toString(i));
+        Log.d("Setup Pin", "Finished drawing pin");
     }
 
     private void setupPins() {
@@ -107,9 +105,13 @@ public class SceneActivity extends AppCompatActivity {
             CSVWorker worker = new CSVWorker(getResources().openRawResource(R.raw.wfdset));
             List<FirePin> coordinates = worker.read();
 
-            for (FirePin firePin :
-                    coordinates) {
+            for (FirePin firePin : coordinates) {
                 runOnUiThread(() -> setupPin(firePin));
+                try {
+                    Thread.sleep(16);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
             }
             Log.d("Setup Pins Run", "Finished inner method");
