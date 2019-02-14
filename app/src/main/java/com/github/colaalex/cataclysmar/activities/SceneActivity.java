@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 
 import com.github.colaalex.cataclysmar.R;
+import com.github.colaalex.cataclysmar.pins.FirePin;
 import com.github.colaalex.cataclysmar.workers.CSVWorker;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
@@ -12,7 +13,6 @@ import com.google.ar.core.Plane;
 import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.Node;
 import com.google.ar.sceneform.Scene;
-import com.google.ar.sceneform.math.Quaternion;
 import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.Color;
 import com.google.ar.sceneform.rendering.MaterialFactory;
@@ -26,21 +26,18 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static java.lang.Math.PI;
-import static java.lang.Math.cos;
-import static java.lang.Math.sin;
-import static java.lang.Math.toRadians;
+import static com.github.colaalex.cataclysmar.pojo.Constants.LIFT;
+import static com.github.colaalex.cataclysmar.pojo.Constants.RADIUS;
 
 public class SceneActivity extends AppCompatActivity {
-
-    private static final float RADIUS = 0.1f;
-    private static final float LIFT = 0.15f;
 
     private Renderable pinRenderable;
     private TransformableNode earth;
     private Renderable earthRenderable;
     private ArFragment arFragment;
     private Scene scene;
+
+    private int i = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,8 +76,13 @@ public class SceneActivity extends AppCompatActivity {
                 ));
     }
 
-    private void setupPin(float x, float y, float z, float lat, float lon) {
+    private void setupPin(FirePin firePin) {
+        Log.d("Setup Pin", "Started drawing pin no. " + Integer.toString(i++));
+
         Node pinNode = new Node();
+        float x = firePin.getX();
+        float y = firePin.getY();
+        float z = firePin.getZ();
         MaterialFactory.makeOpaqueWithColor(this, new Color(android.graphics.Color.RED))
                 .thenAccept(
                         material -> {
@@ -89,11 +91,11 @@ public class SceneActivity extends AppCompatActivity {
                             pinNode.setRenderable(pinRenderable);
                             pinNode.setParent(earth);
                             pinNode.setLocalPosition(new Vector3(x, 0.5f * RADIUS + y, z));
-                            Quaternion q1 = Quaternion.axisAngle(Vector3.forward(), lat + 90);
-                            Quaternion q2 = Quaternion.axisAngle(Vector3.left(), lon);
-                            pinNode.setLocalRotation(Quaternion.multiply(q1, q2));
+                            pinNode.setLocalRotation(firePin.getRotationQuaternion());
                         }
                 );
+
+        Log.d("Setup Pin", "Finished drawing pin no. " + Integer.toString(i));
     }
 
     private void setupPins() {
@@ -103,20 +105,11 @@ public class SceneActivity extends AppCompatActivity {
         new Thread(() -> {
             Log.d("Setup Pins Run", "Started inner method");
             CSVWorker worker = new CSVWorker(getResources().openRawResource(R.raw.wfdset));
-            List<List<Float>> coordinates = worker.read();
+            List<FirePin> coordinates = worker.read();
 
-            for (List<Float> pair :
+            for (FirePin firePin :
                     coordinates) {
-                float lat = pair.get(0);
-                float lon = pair.get(1);
-
-                double theta = toRadians(lat) + PI * 1.5;
-                double phi = toRadians(lon) + PI * 0.5;
-                float x = (float) (RADIUS * sin(theta) * sin(phi));
-                float y = (float) (RADIUS + RADIUS * cos(theta));
-                float z = (float) (RADIUS * sin(theta) * cos(phi));
-
-                runOnUiThread(() -> setupPin(x, y, z, lat, lon));
+                runOnUiThread(() -> setupPin(firePin));
 
             }
             Log.d("Setup Pins Run", "Finished inner method");

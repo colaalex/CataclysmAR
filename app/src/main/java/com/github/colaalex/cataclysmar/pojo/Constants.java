@@ -1,6 +1,6 @@
 package com.github.colaalex.cataclysmar.pojo;
 
-public class Coordinates {
+public class Constants {
     public static final float AFRICA_NORTH = 37.34f;
     public static final float AFRICA_SOUTH = -34.82f;
     public static final float AFRICA_WEST = -17.53f;
@@ -25,5 +25,8 @@ public class Coordinates {
     public static final float SAMERICA_SOUTH = -56.5f;
     public static final float SAMERICA_WEST = -81.333333f;
     public static final float SAMERICA_EAST = -34.783333f;
+
+    public static final float RADIUS = 0.1f;
+    public static final float LIFT = 0.15f;
 
 }

@@ -2,6 +2,7 @@ package com.github.colaalex.cataclysmar.workers;
 
 import android.util.SparseArray;
 
+import com.github.colaalex.cataclysmar.pins.FirePin;
 import com.github.colaalex.cataclysmar.pojo.Wildfire;
 
 import java.io.BufferedReader;
@@ -12,26 +13,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.AFRICA_EAST;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.AFRICA_NORTH;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.AFRICA_SOUTH;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.AFRICA_WEST;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.AUSTRALIA_EAST;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.AUSTRALIA_NORTH;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.AUSTRALIA_SOUTH;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.AUSTRALIA_WEST;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.EURASIA_EAST;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.EURASIA_NORTH;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.EURASIA_SOUTH;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.EURASIA_WEST;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.NAMERICA_EAST;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.NAMERICA_NORTH;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.NAMERICA_SOUTH;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.NAMERICA_WEST;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.SAMERICA_EAST;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.SAMERICA_NORTH;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.SAMERICA_SOUTH;
-import static com.github.colaalex.cataclysmar.pojo.Coordinates.SAMERICA_WEST;
+import static com.github.colaalex.cataclysmar.pojo.Constants.AFRICA_EAST;
+import static com.github.colaalex.cataclysmar.pojo.Constants.AFRICA_NORTH;
+import static com.github.colaalex.cataclysmar.pojo.Constants.AFRICA_SOUTH;
+import static com.github.colaalex.cataclysmar.pojo.Constants.AFRICA_WEST;
+import static com.github.colaalex.cataclysmar.pojo.Constants.AUSTRALIA_EAST;
+import static com.github.colaalex.cataclysmar.pojo.Constants.AUSTRALIA_NORTH;
+import static com.github.colaalex.cataclysmar.pojo.Constants.AUSTRALIA_SOUTH;
+import static com.github.colaalex.cataclysmar.pojo.Constants.AUSTRALIA_WEST;
+import static com.github.colaalex.cataclysmar.pojo.Constants.EURASIA_EAST;
+import static com.github.colaalex.cataclysmar.pojo.Constants.EURASIA_NORTH;
+import static com.github.colaalex.cataclysmar.pojo.Constants.EURASIA_SOUTH;
+import static com.github.colaalex.cataclysmar.pojo.Constants.EURASIA_WEST;
+import static com.github.colaalex.cataclysmar.pojo.Constants.NAMERICA_EAST;
+import static com.github.colaalex.cataclysmar.pojo.Constants.NAMERICA_NORTH;
+import static com.github.colaalex.cataclysmar.pojo.Constants.NAMERICA_SOUTH;
+import static com.github.colaalex.cataclysmar.pojo.Constants.NAMERICA_WEST;
+import static com.github.colaalex.cataclysmar.pojo.Constants.SAMERICA_EAST;
+import static com.github.colaalex.cataclysmar.pojo.Constants.SAMERICA_NORTH;
+import static com.github.colaalex.cataclysmar.pojo.Constants.SAMERICA_SOUTH;
+import static com.github.colaalex.cataclysmar.pojo.Constants.SAMERICA_WEST;
 
 public class CSVWorker {
 
@@ -47,13 +48,13 @@ public class CSVWorker {
         this.inputStream = inputStream;
     }
 
-    public List<List<Float>> read() {
+    public List<FirePin> read() {
 
         SparseArray<List<Wildfire>> wildfires = new SparseArray<>(5);
         for (int i = 0; i < 5; i++)
             wildfires.append(i, new ArrayList<>());
 
-        List<List<Float>> coordinates = new ArrayList<>();
+        List<FirePin> coordinates = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         try {
@@ -92,10 +93,11 @@ public class CSVWorker {
                 return wildfire.getConfidence() < t1.getConfidence() ? -1 : 1;
             }));
             for (int j = 0; j < len; j++) {
-                List<Float> pair = new ArrayList<>();
-                pair.add(wildfires.get(i).get(j).getLatitude());
-                pair.add(wildfires.get(i).get(j).getLongitutde());
-                coordinates.add(pair);
+//                List<Float> pair = new ArrayList<>();
+//                pair.add(wildfires.get(i).get(j).getLatitude());
+//                pair.add(wildfires.get(i).get(j).getLongitutde());
+//                coordinates.add(pair);
+                coordinates.add(new FirePin(wildfires.get(i).get(j)));
             }
         }
 
