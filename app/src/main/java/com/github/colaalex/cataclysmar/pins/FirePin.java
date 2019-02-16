@@ -4,6 +4,8 @@ import com.github.colaalex.cataclysmar.pojo.Wildfire;
 import com.google.ar.sceneform.math.Quaternion;
 import com.google.ar.sceneform.math.Vector3;
 
+import androidx.annotation.NonNull;
+
 import static com.github.colaalex.cataclysmar.pojo.Constants.RADIUS;
 import static java.lang.Math.PI;
 import static java.lang.Math.cos;
@@ -15,7 +17,7 @@ public class FirePin {
     private Wildfire wildfire;
 
     private float latitude;
-    private float longitutde;
+    private float longitude;
     private int confidence;
     private Quaternion rotationQuaternion;
 
@@ -26,15 +28,15 @@ public class FirePin {
     public FirePin(Wildfire wildfire) {
         this.wildfire = wildfire;
         latitude = wildfire.getLatitude();
-        longitutde = wildfire.getLongitutde();
+        longitude = wildfire.getLongitude();
         confidence = wildfire.getConfidence();
 
         Quaternion q1 = Quaternion.axisAngle(Vector3.forward(), latitude + 90);
-        Quaternion q2 = Quaternion.axisAngle(Vector3.left(), longitutde);
+        Quaternion q2 = Quaternion.axisAngle(Vector3.left(), longitude);
         rotationQuaternion = Quaternion.multiply(q1, q2);
 
         double theta = toRadians(latitude) + PI * 1.5;
-        double phi = toRadians(longitutde) + PI * 0.5;
+        double phi = toRadians(longitude) + PI * 0.5;
         x = (float) (RADIUS * sin(theta) * sin(phi));
         y = (float) (RADIUS + RADIUS * cos(theta));
         z = (float) (RADIUS * sin(theta) * cos(phi));
@@ -54,5 +56,11 @@ public class FirePin {
 
     public float getZ() {
         return z;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return wildfire.toString();
     }
 }

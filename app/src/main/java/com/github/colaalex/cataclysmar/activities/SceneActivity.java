@@ -3,6 +3,7 @@ package com.github.colaalex.cataclysmar.activities;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.widget.TextView;
 
 import com.github.colaalex.cataclysmar.R;
 import com.github.colaalex.cataclysmar.pins.FirePin;
@@ -19,6 +20,7 @@ import com.google.ar.sceneform.rendering.MaterialFactory;
 import com.google.ar.sceneform.rendering.Renderable;
 import com.google.ar.sceneform.rendering.ShapeFactory;
 import com.google.ar.sceneform.rendering.Texture;
+import com.google.ar.sceneform.rendering.ViewRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
@@ -34,6 +36,8 @@ public class SceneActivity extends AppCompatActivity {
     private Renderable pinRenderable;
     private TransformableNode earth;
     private Renderable earthRenderable;
+    private Node infoCard;
+    private ViewRenderable cardRenderable;
     private ArFragment arFragment;
     private Scene scene;
 
@@ -58,6 +62,18 @@ public class SceneActivity extends AppCompatActivity {
                     earth.setParent(anchorNode);
                     earth.setRenderable(earthRenderable);
                     earth.select();
+
+                    infoCard = new Node();
+                    infoCard.setParent(earth);
+                    infoCard.setLocalPosition(new Vector3(0.0f, RADIUS * 2.5f, 0.0f));
+                    ViewRenderable.builder()
+                            .setView(this, R.layout.pin_info)
+                            .build()
+                            .thenAccept(viewRenderable -> {
+                                cardRenderable = viewRenderable;
+                                infoCard.setRenderable(cardRenderable);
+                            });
+
 
                     setupPins();
                 }
@@ -92,6 +108,8 @@ public class SceneActivity extends AppCompatActivity {
                             pinNode.setLocalRotation(firePin.getRotationQuaternion());
                         }
                 );
+
+        pinNode.setOnTapListener((hitTestResult, motionEvent) -> ((TextView) cardRenderable.getView()).setText(firePin.toString()));
 
         Log.d("Setup Pin", "Finished drawing pin");
     }
