@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="buttonActivated">#FF6868</color>
     <color name="buttonStart">#F7E436</color>
+    <color name="infoCard">#1E88E5</color>
 </resources>

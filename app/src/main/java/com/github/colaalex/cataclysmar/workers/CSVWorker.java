@@ -95,7 +95,7 @@ public class CSVWorker {
             for (int j = 0; j < len; j++) {
 //                List<Float> pair = new ArrayList<>();
 //                pair.add(wildfires.get(i).get(j).getLatitude());
-//                pair.add(wildfires.get(i).get(j).getLongitutde());
+//                pair.add(wildfires.get(i).get(j).getLongitude());
 //                coordinates.add(pair);
                 coordinates.add(new FirePin(wildfires.get(i).get(j)));
             }
