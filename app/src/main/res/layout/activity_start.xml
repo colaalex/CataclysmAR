@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="175dp"
+        android:layout_height="201dp"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -57,13 +57,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardRegion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:cardBackgroundColor="#F3F3F3"
-                app:cardCornerRadius="10dp"
+                style="@style/card"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -74,21 +68,17 @@
 
                     <TextView
                         android:id="@+id/tvRegion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="11dp"
+                        style="@style/text"
                         android:text="@string/region"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <Spinner
+                    <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/srRegion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvRegion" />
@@ -97,15 +87,9 @@
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardTime"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                app:cardBackgroundColor="#F3F3F3"
-                app:cardCornerRadius="10dp"
+                style="@style/card"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardRegion">
@@ -116,13 +100,8 @@
 
                     <TextView
                         android:id="@+id/tvTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        style="@style/text"
                         android:text="@string/time_period"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -150,8 +129,6 @@
                         android:id="@+id/btnMonth"
                         style="@style/button"
                         android:text="@string/month"
-                        android:textAllCaps="false"
-                        android:textColor="#F5F5F5"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/btnWeek"
@@ -159,17 +136,11 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardDisaster"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                app:cardBackgroundColor="#F3F3F3"
-                app:cardCornerRadius="10dp"
+                style="@style/card"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardTime">
@@ -180,13 +151,8 @@
 
                     <TextView
                         android:id="@+id/tvDisaster"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        style="@style/text"
                         android:text="@string/disaster"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -202,27 +168,29 @@
                     <Button
                         android:id="@+id/btnQuake"
                         style="@style/button"
-                        android:layout_width="wrap_content"
                         android:enabled="false"
                         android:text="@string/quake"
-                        android:textAllCaps="false"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/btnFire"
                         app:layout_constraintTop_toBottomOf="@+id/tvDisaster" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnStart"
-                android:layout_width="242dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="20dp"
+                android:layout_width="240dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="65dp"
                 android:text="@string/start"
                 android:textAllCaps="false"
+                android:letterSpacing="0"
+                android:elevation="4dp"
+                android:textColor="#000"
+                android:textSize="19sp"
                 app:backgroundTint="@color/buttonStart"
-                app:cornerRadius="10dp"
+                app:cornerRadius="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardDisaster" />

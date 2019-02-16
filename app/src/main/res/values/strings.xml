@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cataclysm AR</string>
+    <string name="app_name">CataclysmAR</string>
     <string name="head_title">Интерактивная карта катастроф</string>
     <string name="region">Регион</string>
     <string name="time_period">Временной интервал</string>
