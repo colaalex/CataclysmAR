@@ -108,7 +108,6 @@
                     <Button
                         android:id="@+id/btnDay"
                         style="@style/button"
-                        android:enabled="false"
                         android:text="@string/day"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/btnWeek"
@@ -118,7 +117,6 @@
                     <Button
                         android:id="@+id/btnWeek"
                         style="@style/button"
-                        android:enabled="false"
                         android:text="@string/week"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btnMonth"
@@ -168,7 +166,6 @@
                     <Button
                         android:id="@+id/btnQuake"
                         style="@style/button"
-                        android:enabled="false"
                         android:text="@string/quake"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/btnFire"
