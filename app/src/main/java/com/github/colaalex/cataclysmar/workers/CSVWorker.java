@@ -97,7 +97,11 @@ public class CSVWorker {
 //                pair.add(wildfires.get(i).get(j).getLatitude());
 //                pair.add(wildfires.get(i).get(j).getLongitude());
 //                coordinates.add(pair);
-                coordinates.add(new FirePin(wildfires.get(i).get(j)));
+                try {
+                    coordinates.add(new FirePin(wildfires.get(i).get(j)));
+                } catch (IndexOutOfBoundsException e) {
+                    e.printStackTrace();
+                }
             }
         }
 

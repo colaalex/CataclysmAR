@@ -33,6 +33,10 @@ import static com.github.colaalex.cataclysmar.pojo.Constants.RADIUS;
 
 public class SceneActivity extends AppCompatActivity {
 
+    private static final int DAY = 1;
+    private static final int TWO_DAYS = 2;
+    private static final int WEEK = 3;
+
     private Renderable pinRenderable;
     private TransformableNode earth;
     private Renderable earthRenderable;
@@ -75,9 +79,24 @@ public class SceneActivity extends AppCompatActivity {
                             });
 
 
-                    setupPins();
+                    passIntent();
                 }
         );
+    }
+
+    private void passIntent() {
+        int selectedTime = getIntent().getIntExtra("time", 0);
+        switch (selectedTime) {
+            case R.id.btnDay:
+                setupPins(DAY);
+                break;
+            case R.id.btnWeek:
+                setupPins(TWO_DAYS);
+                break;
+            case R.id.btnMonth:
+                setupPins(WEEK);
+                break;
+        }
     }
 
     private void setTextures() {
@@ -114,13 +133,29 @@ public class SceneActivity extends AppCompatActivity {
         Log.d("Setup Pin", "Finished drawing pin");
     }
 
-    private void setupPins() {
+    private void setupPins(int period) {
 
         Log.d("Setup Pins", "Method started");
 
         new Thread(() -> {
             Log.d("Setup Pins Run", "Started inner method");
-            CSVWorker worker = new CSVWorker(getResources().openRawResource(R.raw.wfdset));
+
+            CSVWorker worker;
+
+            switch (period) {
+                case WEEK:
+                    worker = new CSVWorker(getResources().openRawResource(R.raw.data7));
+                    break;
+                case DAY:
+                    worker = new CSVWorker(getResources().openRawResource(R.raw.data24));
+                    break;
+                case TWO_DAYS:
+                    worker = new CSVWorker(getResources().openRawResource(R.raw.data48));
+                    break;
+                default:
+                    throw new RuntimeException("Couldn't understand query");
+            }
+
             List<FirePin> coordinates = worker.read();
 
             for (FirePin firePin : coordinates) {
