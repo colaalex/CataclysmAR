@@ -37,6 +37,8 @@ public class SceneActivity extends AppCompatActivity {
     private static final int TWO_DAYS = 2;
     private static final int WEEK = 3;
 
+    private boolean isPlaced;
+
     private Renderable pinRenderable;
     private TransformableNode earth;
     private Renderable earthRenderable;
@@ -53,9 +55,14 @@ public class SceneActivity extends AppCompatActivity {
         setTextures();
         scene = arFragment.getArSceneView().getScene();
 
+        isPlaced = false;
+
         arFragment.setOnTapArPlaneListener(
                 (HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
                     if (earthRenderable == null)
+                        return;
+
+                    if (isPlaced)
                         return;
 
                     Anchor anchor = hitResult.createAnchor();
@@ -66,6 +73,8 @@ public class SceneActivity extends AppCompatActivity {
                     earth.setParent(anchorNode);
                     earth.setRenderable(earthRenderable);
                     earth.select();
+
+                    isPlaced = true;
 
                     infoCard = new Node();
                     infoCard.setParent(earth);
