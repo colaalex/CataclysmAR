@@ -10,8 +10,6 @@ import android.widget.Spinner;
 
 import com.github.colaalex.cataclysmar.R;
 
-import java.util.HashMap;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -24,7 +22,7 @@ public class StartActivity extends AppCompatActivity {
     Button btnQuake;
 
     int selectedTime; // button ids are used
-    HashMap<Integer, Boolean> selectedDisastes;
+    int selectedDisaster;
 
     @SuppressLint("UseSparseArrays")
     @Override
@@ -32,7 +30,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        selectedDisastes = new HashMap<>();
+        selectedDisaster = selectedTime = 0;
 
         Spinner regionSpinner = findViewById(R.id.srRegion);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.regions_array, android.R.layout.simple_spinner_item);
@@ -50,18 +48,17 @@ public class StartActivity extends AppCompatActivity {
 
         btnFire = findViewById(R.id.btnFire);
         btnFire.setOnClickListener(view -> toggleDisaster(R.id.btnFire));
-        selectedDisastes.put(R.id.btnFire, false);
 
         btnQuake = findViewById(R.id.btnQuake);
         btnQuake.setOnClickListener(view -> toggleDisaster(R.id.btnQuake));
-        selectedDisastes.put(R.id.btnQuake, false);
 
         Button startButton = findViewById(R.id.btnStart);
         startButton.setOnClickListener(view -> {
+            if (selectedTime == 0 || selectedDisaster == 0)
+                return;
             Intent intent = new Intent(getApplicationContext(), SceneActivity.class);
             intent.putExtra("time", selectedTime);
-            intent.putExtra("disasters", selectedDisastes);
-            //TODO проверка на непустой ввод
+            intent.putExtra("disaster", selectedDisaster);
             startActivity(intent);
         });
     }
@@ -86,20 +83,16 @@ public class StartActivity extends AppCompatActivity {
 
     @SuppressWarnings("ConstantConditions")
     private void toggleDisaster(int buttonId) {
+        btnFire.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonDeactivated), PorterDuff.Mode.MULTIPLY);
+        btnQuake.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonDeactivated), PorterDuff.Mode.MULTIPLY);
+        selectedDisaster = buttonId;
         switch (buttonId) {
             case R.id.btnFire:
-                if (selectedDisastes.get(R.id.btnFire)) {
-                    btnFire.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonDeactivated), PorterDuff.Mode.MULTIPLY);
-                } else
-                    btnFire.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonActivated), PorterDuff.Mode.MULTIPLY);
+                btnFire.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonActivated), PorterDuff.Mode.MULTIPLY);
                 break;
             case R.id.btnQuake:
-                if (selectedDisastes.get(R.id.btnQuake)) {
-                    btnQuake.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonDeactivated), PorterDuff.Mode.MULTIPLY);
-                } else
-                    btnQuake.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonActivated), PorterDuff.Mode.MULTIPLY);
+                btnQuake.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonActivated), PorterDuff.Mode.MULTIPLY);
                 break;
         }
-        selectedDisastes.replace(buttonId, !selectedDisastes.get(buttonId));
     }
 }
