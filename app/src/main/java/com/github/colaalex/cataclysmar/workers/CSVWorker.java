@@ -29,6 +29,7 @@ import static com.github.colaalex.cataclysmar.pojo.Constants.NAMERICA_EAST;
 import static com.github.colaalex.cataclysmar.pojo.Constants.NAMERICA_NORTH;
 import static com.github.colaalex.cataclysmar.pojo.Constants.NAMERICA_SOUTH;
 import static com.github.colaalex.cataclysmar.pojo.Constants.NAMERICA_WEST;
+import static com.github.colaalex.cataclysmar.pojo.Constants.QUAKE;
 import static com.github.colaalex.cataclysmar.pojo.Constants.SAMERICA_EAST;
 import static com.github.colaalex.cataclysmar.pojo.Constants.SAMERICA_NORTH;
 import static com.github.colaalex.cataclysmar.pojo.Constants.SAMERICA_SOUTH;
@@ -43,12 +44,17 @@ public class CSVWorker {
     private static final int SAMERICA = 4;
 
     private InputStream inputStream;
+    private int disaster;
 
-    public CSVWorker(InputStream inputStream) {
+    public CSVWorker(InputStream inputStream, int disaster) {
         this.inputStream = inputStream;
+        this.disaster = disaster;
     }
 
-    public List<FirePin> read() {
+    public List<FirePin> readFire() {
+
+        if (disaster == QUAKE)
+            return readQuake(); //TODO убрать этот сверхстрашный костыль
 
         SparseArray<List<Wildfire>> wildfires = new SparseArray<>(5);
         for (int i = 0; i < 5; i++)
@@ -97,6 +103,62 @@ public class CSVWorker {
 //                pair.add(wildfires.get(i).get(j).getLatitude());
 //                pair.add(wildfires.get(i).get(j).getLongitude());
 //                coordinates.add(pair);
+                try {
+                    coordinates.add(new FirePin(wildfires.get(i).get(j)));
+                } catch (IndexOutOfBoundsException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return coordinates;
+    }
+
+    private List<FirePin> readQuake() {
+        //пока что FirePin, как добавлю QuakePin, заменю
+        SparseArray<List<Wildfire>> wildfires = new SparseArray<>(5);
+        for (int i = 0; i < 5; i++)
+            wildfires.append(i, new ArrayList<>());
+
+        List<FirePin> coordinates = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+        try {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(",");
+                try {
+
+                    float lat = Float.parseFloat(row[1]);
+                    float lon = Float.parseFloat(row[2]);
+
+                    int cont = determineContinent(lat, lon);
+
+                    if (cont != -1) {
+                        wildfires.get(cont).add(new Wildfire(lat, lon, Integer.parseInt(row[3].replaceAll("\\s", ""))));
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        for (int i = 0; i < 5; i++) {
+            int len = i != EURASIA ? 200 : 400; // сколько элементов максимум может быть у одного континента
+            Collections.sort(wildfires.get(i), ((wildfire, t1) -> {
+                if (wildfire.getConfidence() == t1.getConfidence())
+                    return 0;
+                return wildfire.getConfidence() < t1.getConfidence() ? -1 : 1;
+            }));
+            for (int j = 0; j < len; j++) {
                 try {
                     coordinates.add(new FirePin(wildfires.get(i).get(j)));
                 } catch (IndexOutOfBoundsException e) {

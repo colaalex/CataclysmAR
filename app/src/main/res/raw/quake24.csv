@@ -1,0 +1,195 @@
+time,latitude,longitude,depth,mag,magType,nst,gap,dmin,rms,net,id,updated,place,type,horizontalError,depthError,magError,magNst,status,locationSource,magSource
+2019-03-15T12:14:36.657Z,61.4136,-150.0348,33.2,1.7,ml,,,,0.69,ak,ak0193ekzynl,2019-03-15T12:19:23.153Z,"12km SSW of Big Lake, Alaska",earthquake,,0.2,,,automatic,ak,ak
+2019-03-15T12:08:39.690Z,-6.0804,148.837,49.52,5.1,mb,,51,3.808,0.78,us,us1000jgdp,2019-03-15T12:24:26.040Z,"80km W of Kandrian, Papua New Guinea",earthquake,4.8,7.7,0.089,41,reviewed,us,us
+2019-03-15T11:47:49.630Z,38.8175011,-122.8099976,2.78,0.74,md,15,61,0.005886,0.04,nc,nc73152311,2019-03-15T12:03:04.140Z,"6km NW of The Geysers, CA",earthquake,0.29,0.56,0.29,4,automatic,nc,nc
+2019-03-15T11:17:44.790Z,33.0145,-116.4195,16.81,0.56,ml,12,113,0.1222,0.26,ci,ci38269735,2019-03-15T11:21:26.027Z,"18km ESE of Julian, CA",earthquake,0.71,1.36,0.123,7,automatic,ci,ci
+2019-03-15T11:14:23.030Z,35.3075,-118.5903333,4.41,1.67,ml,33,87,0.1109,0.16,ci,ci38269727,2019-03-15T11:24:55.940Z,"23km NNW of Tehachapi, CA",earthquake,0.23,0.87,0.161,29,automatic,ci,ci
+2019-03-15T11:10:38.230Z,19.0333328,-155.0888367,14.28,1.78,md,46,241,0.2541,0.3,hv,hv70866272,2019-03-15T11:14:26.490Z,"45km ESE of Pahala, Hawaii",earthquake,1.6,2.23,0.15,8,automatic,hv,hv
+2019-03-15T10:58:40.510Z,33.4901667,-116.7891667,4.86,0.74,ml,28,68,0.02404,0.17,ci,ci38269719,2019-03-15T11:02:15.505Z,"9km NE of Aguanga, CA",earthquake,0.22,0.7,0.073,18,automatic,ci,ci
+2019-03-15T10:54:22.110Z,33.5101667,-116.772,2.68,0.32,ml,8,105,0.02379,0.06,ci,ci38269703,2019-03-15T10:57:57.132Z,"10km WSW of Anza, CA",earthquake,0.26,0.22,0.097,3,automatic,ci,ci
+2019-03-15T10:53:32.260Z,38.7571678,-122.7366638,1.14,0.98,md,9,131,0.007584,0.03,nc,nc73152301,2019-03-15T11:29:02.937Z,"3km SE of The Geysers, CA",earthquake,0.3,0.69,0.19,5,automatic,nc,nc
+2019-03-15T10:47:47.090Z,38.7519989,-122.7340012,1.09,2.36,md,22,71,0.008264,0.09,nc,nc73152296,2019-03-15T11:17:03.094Z,"3km SE of The Geysers, CA",earthquake,0.25,0.37,0.23,11,automatic,nc,nc
+2019-03-15T10:47:24.575Z,59.1559,-151.8415,61.5,1.9,ml,,,,0.71,ak,ak0193ek0576,2019-03-15T10:51:05.241Z,"56km SSW of Homer, Alaska",earthquake,,1.1,,,automatic,ak,ak
+2019-03-15T10:47:08.179Z,62.2126,-149.0235,33.1,1.8,ml,,,,0.8,ak,ak0193ek03ve,2019-03-15T11:00:17.469Z,"43km E of Y, Alaska",earthquake,,0.3,,,automatic,ak,ak
+2019-03-15T10:46:32.390Z,33.5416667,-116.441,9.6,0.62,ml,16,66,0.02225,0.11,ci,ci38269695,2019-03-15T10:50:22.506Z,"18km SW of La Quinta, CA",earthquake,0.27,0.54,0.151,10,automatic,ci,ci
+2019-03-15T10:43:25.450Z,38.7518349,-122.7344971,0.21,0.88,md,7,145,0.007895,0.02,nc,nc73152291,2019-03-15T11:17:02.867Z,"3km SE of The Geysers, CA",earthquake,0.31,0.95,0.08,3,automatic,nc,nc
+2019-03-15T10:40:19.460Z,34.0938333,-117.2258333,8.73,1.05,ml,23,89,0.07555,0.27,ci,ci38269687,2019-03-15T10:44:04.659Z,"4km SSW of Highland, CA",earthquake,0.6,1.25,0.239,30,automatic,ci,ci
+2019-03-15T10:38:23.040Z,34.0868333,-117.2241667,3.85,0.98,ml,23,66,0.03463,0.33,ci,ci38269679,2019-03-15T10:42:01.349Z,"5km SSW of Highland, CA",earthquake,0.56,1.67,0.186,28,automatic,ci,ci
+2019-03-15T10:27:20.910Z,38.7561684,-122.704834,0.74,1.13,md,8,204,0.01275,0.05,nc,nc73152281,2019-03-15T10:54:02.726Z,"2km SSW of Anderson Springs, CA",earthquake,0.45,0.54,0.13,4,automatic,nc,nc
+2019-03-15T10:26:44.133Z,61.9106,-143.7436,2.3,1.4,ml,,,,0.41,ak,ak0193ejvonb,2019-03-15T10:34:21.495Z,"57km NE of Chitina, Alaska",earthquake,,0.5,,,automatic,ak,ak
+2019-03-15T10:26:38.880Z,38.7596664,-122.7131653,1.17,1.56,md,8,193,0.01379,0.02,nc,nc73152276,2019-03-15T12:15:04.203Z,"2km SW of Anderson Springs, CA",earthquake,0.44,0.86,0.08,5,automatic,nc,nc
+2019-03-15T10:20:37.477Z,63.2199,-150.9944,0,2.1,ml,,,,0.92,ak,ak0193ejudr9,2019-03-15T10:31:10.170Z,"104km W of Cantwell, Alaska",earthquake,,0.4,,,automatic,ak,ak
+2019-03-15T10:14:30.340Z,35.8256683,-120.3738327,6.11,1.15,md,7,102,0.02255,0.05,nc,nc73152271,2019-03-15T11:48:03.051Z,"10km SSE of Parkfield, CA",earthquake,0.98,1.75,0.27,4,automatic,nc,nc
+2019-03-15T10:10:57.810Z,33.2926667,-116.3605,10.38,0.67,ml,11,245,0.05337,0.12,ci,ci38269671,2019-03-15T10:14:48.946Z,"4km NNE of Borrego Springs, CA",earthquake,0.83,0.56,0.106,9,automatic,ci,ci
+2019-03-15T10:04:40.079Z,60.1794,-152.7512,95.3,2.4,ml,,,,0.52,ak,ak0193ejqyk6,2019-03-15T10:18:06.508Z,"34km S of Redoubt Volcano, Alaska",earthquake,,0.4,,,automatic,ak,ak
+2019-03-15T10:02:51.040Z,19.5004997,-155.4503326,-0.04,2.19,ml,39,48,0.02974,0.18,hv,hv70866207,2019-03-15T10:08:32.900Z,"23km WNW of Volcano, Hawaii",earthquake,0.34,0.66,2.9,18,automatic,hv,hv
+2019-03-15T09:56:46.312Z,61.3809,-150.0863,37.6,1.5,ml,,,,0.53,ak,ak0193ejgono,2019-03-15T10:01:00.943Z,"17km SSW of Big Lake, Alaska",earthquake,,0.8,,,automatic,ak,ak
+2019-03-15T09:50:25.120Z,33.1445,-116.6343333,4.3,1.69,ml,59,26,0.05557,0.19,ci,ci38269663,2019-03-15T10:08:03.038Z,"8km NNW of Julian, CA",earthquake,0.21,0.55,0.248,26,automatic,ci,ci
+2019-03-15T09:31:12.030Z,38.8116684,-122.8241653,1.79,0.56,md,6,119,0.01424,0.03,nc,nc73152266,2019-03-15T11:21:04.891Z,"7km WNW of The Geysers, CA",earthquake,0.45,1.93,,1,automatic,nc,nc
+2019-03-15T09:05:01.260Z,18.0458,-66.1728,7,1.44,md,3,157,0.1039,0.36,pr,pr2019074009,2019-03-15T11:17:45.267Z,"3km E of La Plena, Puerto Rico",earthquake,3.59,2.41,0.54,2,reviewed,pr,pr
+2019-03-15T09:01:08.439Z,61.8298,-149.1079,20.3,1.5,ml,,,,0.4,ak,ak0193ej4tcr,2019-03-15T09:04:49.176Z,"11km NE of Fishhook, Alaska",earthquake,,0.3,,,automatic,ak,ak
+2019-03-15T08:58:53.805Z,61.5336,-149.9174,35.4,1.2,ml,,,,0.57,ak,ak0193eivp2c,2019-03-15T09:10:00.499Z,"2km NE of Big Lake, Alaska",earthquake,,3.6,,,automatic,ak,ak
+2019-03-15T08:28:53.964Z,63.5742,-147.2872,0.2,1.8,ml,,,,0.67,ak,ak0193eip9o9,2019-03-15T08:33:01.536Z,"85km ENE of Cantwell, Alaska",earthquake,,0.3,,,automatic,ak,ak
+2019-03-15T08:24:15.983Z,62.8949,-148.5637,64.2,2.2,ml,,,,0.88,ak,ak0193eioddd,2019-03-15T08:37:53.230Z,"58km SSE of Cantwell, Alaska",earthquake,,3.5,,,automatic,ak,ak
+2019-03-15T08:23:49.443Z,61.0782,-149.5181,31.1,2.6,ml,,,,0.65,ak,ak0193eio6nm,2019-03-15T08:35:12.339Z,"26km SE of Anchorage, Alaska",earthquake,,0.3,,,automatic,ak,ak
+2019-03-15T08:14:28.490Z,19.4233341,-154.8658295,0.05,1.71,md,45,216,0.05919,0.3,hv,hv70866137,2019-03-15T08:17:53.750Z,"7km SE of Leilani Estates, Hawaii",earthquake,1.26,0.31,0.11,12,automatic,hv,hv
+2019-03-15T08:01:37.030Z,69.4747,-144.8664,2.15,2.5,ml,,254,0.555,0.25,us,us1000jg98,2019-03-15T08:23:14.040Z,"87km SSW of Kaktovik, Alaska",earthquake,6.9,4.7,0.066,30,reviewed,us,us
+2019-03-15T07:53:34.790Z,37.6368332,-118.9196701,5.48,1.58,md,19,67,0.01711,0.03,nc,nc73152261,2019-03-15T09:38:02.277Z,"5km E of Mammoth Lakes, CA",earthquake,0.34,0.48,0.21,17,automatic,nc,nc
+2019-03-15T07:41:46.230Z,53.4706,161.2546,42.33,4.4,mb,,167,1.628,0.79,us,us1000jg94,2019-03-15T08:11:10.040Z,"180km ENE of Petropavlovsk-Kamchatskiy, Russia",earthquake,11,7.6,0.099,29,reviewed,us,us
+2019-03-15T07:24:15.521Z,63.2579,-151.0271,0.4,2.2,ml,,,,1.1,ak,ak0193ei2w5b,2019-03-15T07:32:08.014Z,"105km W of Cantwell, Alaska",earthquake,,0.4,,,automatic,ak,ak
+2019-03-15T07:19:43.210Z,38.8178329,-122.8208313,2.31,1.36,md,26,45,0.01007,0.04,nc,nc73152246,2019-03-15T09:37:03.272Z,"7km NW of The Geysers, CA",earthquake,0.22,0.37,0.04,5,automatic,nc,nc
+2019-03-15T07:13:35.110Z,38.8214989,-122.8479996,1.16,0.56,md,11,81,0.01777,0.04,nc,nc73152241,2019-03-15T09:11:03.104Z,"9km WNW of The Geysers, CA",earthquake,0.26,1.11,0.01,2,automatic,nc,nc
+2019-03-15T07:10:15.637Z,63.2812,-151.0407,0.2,2.9,ml,,,,1.11,ak,ak0193ehzw6d,2019-03-15T08:20:26.040Z,"105km W of Cantwell, Alaska",earthquake,,0.4,,,automatic,ak,ak
+2019-03-15T07:00:12.910Z,56.1001,-149.7647,19.93,4,mb,,144,2.246,0.66,us,us1000jg8s,2019-03-15T07:24:04.995Z,"247km SE of Kodiak, Alaska",earthquake,7.9,4.8,0.129,16,reviewed,us,us
+2019-03-15T06:57:24.210Z,17.8785,-66.0118,10,1.88,md,6,260,0.1287,0.14,pr,pr2019074008,2019-03-15T07:37:22.211Z,"10km SSE of Arroyo, Puerto Rico",earthquake,1.01,0.65,0.5,6,reviewed,pr,pr
+2019-03-15T06:35:05.216Z,63.2446,-151.1222,0,1.7,ml,,,,0.6,ak,ak0193ehjnet,2019-03-15T06:46:55.507Z,"110km W of Cantwell, Alaska",earthquake,,0.4,,,automatic,ak,ak
+2019-03-15T06:20:56.754Z,63.2619,-151.2591,0,1.7,ml,,,,0.84,ak,ak0193ehgovf,2019-03-15T06:26:29.745Z,"116km W of Cantwell, Alaska",earthquake,,0.3,,,automatic,ak,ak
+2019-03-15T06:17:53.996Z,63.2489,-151.0108,0.1,2.3,ml,,,,1.15,ak,ak0193ehg1g8,2019-03-15T06:38:28.040Z,"104km W of Cantwell, Alaska",earthquake,,0.4,,,automatic,ak,ak
+2019-03-15T05:58:36.236Z,63.2693,-151.1094,7.8,3.9,ml,,,,0.9,ak,ak0193eh3cvg,2019-03-15T06:24:06.645Z,"105km W of Cantwell, Alaska",earthquake,,0.2,,,reviewed,ak,ak
+2019-03-15T05:46:52.310Z,35.7301674,-121.114502,7.14,1,md,7,126,0.1058,0.03,nc,nc73152231,2019-03-15T06:19:03.161Z,"12km NE of San Simeon, CA",earthquake,0.61,1.4,0.37,4,automatic,nc,nc
+2019-03-15T05:44:42.930Z,17.8781,-65.6665,9,1.89,md,5,315,0.3208,0.39,pr,pr2019074007,2019-03-15T06:57:39.566Z,"26km ESE of Emajagua, Puerto Rico",earthquake,2.22,1.53,0.24,5,reviewed,pr,pr
+2019-03-15T05:18:05.220Z,38.8105011,-122.8268356,1.79,0.68,md,8,92,0.01161,0.04,nc,nc73152226,2019-03-15T06:08:03.090Z,"7km WNW of The Geysers, CA",earthquake,0.39,0.94,0.12,2,automatic,nc,nc
+2019-03-15T05:15:18.420Z,46.4664993286133,-119.355667114258,13.3999996185303,1.35000002,md,8,250,,0.319999993,uw,uw61514077,2019-03-15T05:16:56.150Z,"18km N of West Richland, Washington",earthquake,6.91,12.5799999,0.360000014,4,automatic,uw,uw
+2019-03-15T05:07:41.730Z,38.8250008,-122.8560028,2.09,1.36,md,21,65,0.00263,0.03,nc,nc73152216,2019-03-15T08:03:03.732Z,"10km WNW of The Geysers, CA",earthquake,0.23,0.4,0.1,6,automatic,nc,nc
+2019-03-15T05:03:50.080Z,-17.8571,-65.8913,358.34,6.3,mww,,23,2.65,1.04,us,us1000jg5z,2019-03-15T11:40:48.195Z,"28km S of Cliza, Bolivia",earthquake,7.8,6,0.051,37,reviewed,us,us
+2019-03-15T05:00:17.590Z,38.8221664,-122.8521652,2.26,1.63,md,25,90,0.006509,0.03,nc,nc73152206,2019-03-15T07:38:02.598Z,"10km WNW of The Geysers, CA",earthquake,0.2,0.33,0.06,8,automatic,nc,nc
+2019-03-15T04:55:31.150Z,38.8256683,-122.8536682,1.92,1.38,md,17,91,0.003127,0.03,nc,nc73152196,2019-03-15T06:30:03.215Z,"10km WNW of The Geysers, CA",earthquake,0.21,0.39,0.03,6,automatic,nc,nc
+2019-03-15T04:51:14.470Z,37.2817,141.2089,35,4.4,mb,,98,0.674,1.19,us,us1000jg5w,2019-03-15T05:09:24.040Z,"29km SE of Namie, Japan",earthquake,3.9,2,0.179,9,reviewed,us,us
+2019-03-15T04:44:27.887Z,57.3568,-156.0602,91.9,2.5,ml,,,,0.55,ak,ak0193egewm9,2019-03-15T04:49:25.365Z,"126km W of Larsen Bay, Alaska",earthquake,,0.7,,,automatic,ak,ak
+2019-03-15T04:39:18.680Z,19.2511,-64.6213,78,3.12,md,6,341,1.6543,0.26,pr,pr2019074006,2019-03-15T06:57:25.246Z,"92km N of Road Town, British Virgin Islands",earthquake,7.99,14.95,0.35,6,reviewed,pr,pr
+2019-03-15T04:35:06.757Z,64.6534,-149.3399,18.3,1.3,ml,,,,0.56,ak,ak0193egcxjd,2019-03-15T04:41:13.262Z,"13km NW of North Nenana, Alaska",earthquake,,0.1,,,automatic,ak,ak
+2019-03-15T04:34:31.740Z,33.1961667,-115.606,2.41,1.17,ml,8,126,0.01903,0.2,ci,ci38269591,2019-03-15T04:38:16.982Z,"10km WSW of Niland, CA",earthquake,1.18,1.01,0.247,8,automatic,ci,ci
+2019-03-15T04:34:07.250Z,19.7696667,-155.5333405,14.64,2.46,ml,43,128,0.01232,0.19,hv,hv70865917,2019-03-15T04:39:47.750Z,"31km SSE of Waimea, Hawaii",earthquake,0.54,0.99,3.52,12,automatic,hv,hv
+2019-03-15T04:28:12.580Z,38.822834,-122.8079987,-0.2,0.8,md,12,71,0.01785,0.05,nc,nc73152186,2019-03-15T06:04:04.066Z,"7km NW of The Geysers, CA",earthquake,0.24,0.76,0.04,3,automatic,nc,nc
+2019-03-15T04:07:44.315Z,59.646,-152.4889,70.1,1.5,ml,,,,0.44,ak,ak0193eg701w,2019-03-15T04:11:06.580Z,"39km WSW of Anchor Point, Alaska",earthquake,,2.3,,,automatic,ak,ak
+2019-03-15T03:56:59.030Z,69.5433,-144.4787,10,2.5,ml,,192,0.706,0.87,us,us1000jg5g,2019-03-15T04:39:23.040Z,"73km SSW of Kaktovik, Alaska",earthquake,4.7,2,0.05,52,reviewed,us,us
+2019-03-15T03:47:22.700Z,38.7963333,-122.7901688,0.97,0.19,md,6,82,0.003608,0.05,nc,nc73152181,2019-03-15T04:14:02.458Z,"4km NW of The Geysers, CA",earthquake,0.58,0.76,0.13,2,automatic,nc,nc
+2019-03-15T03:46:58.020Z,38.7941666,-122.7893295,0.97,0.55,md,9,95,0.00148,0.08,nc,nc73152176,2019-03-15T04:02:03.396Z,"3km WNW of The Geysers, CA",earthquake,0.39,0.59,0.27,3,automatic,nc,nc
+2019-03-15T03:45:07.270Z,34.2244987,-117.0999985,24.79,1.07,ml,17,210,0.1815,0.31,ci,ci38269559,2019-03-15T03:47:12.728Z,"2km NNE of Running Springs, CA",earthquake,2.38,3.41,0.261,6,automatic,ci,ci
+2019-03-15T03:44:20.050Z,18.0276,-66.1908,10,1.14,md,3,158,0.1044,0.46,pr,pr2019074005,2019-03-15T06:57:15.582Z,"2km SE of La Plena, Puerto Rico",earthquake,6.62,7.2,0.51,3,reviewed,pr,pr
+2019-03-15T03:34:33.270Z,18.266,-67.1043,30,2.15,md,3,288,0.0921,0.26,pr,pr2019074004,2019-03-15T06:57:04.814Z,"1km SE of Espino, Puerto Rico",earthquake,2.72,2.17,0.09,3,reviewed,pr,pr
+2019-03-15T03:22:19.760Z,18.4818,-68.8081,105,2.61,md,13,126,0.4279,0.27,pr,pr2019074003,2019-03-15T06:56:48.380Z,"15km WNW of San Rafael del Yuma, Dominican Republic",earthquake,2.3,1.76,0.21,13,reviewed,pr,pr
+2019-03-15T03:19:42.263Z,64.9593,-149.1716,34.5,1.1,ml,,,,0.81,ak,ak0193efo5a0,2019-03-15T03:24:06.817Z,"42km N of North Nenana, Alaska",earthquake,,0.4,,,automatic,ak,ak
+2019-03-15T03:19:29.468Z,64.9307,-149.0555,25.7,1.1,ml,,,,0.13,ak,ak0193efo48i,2019-03-15T03:25:47.526Z,"39km N of North Nenana, Alaska",earthquake,,0.8,,,automatic,ak,ak
+2019-03-15T03:16:46.710Z,33.7323333,-116.8041667,15.79,0.89,ml,28,103,0.07793,0.18,ci,ci38269535,2019-03-15T03:20:25.175Z,"8km W of Idyllwild, CA",earthquake,0.39,0.55,0.247,28,automatic,ci,ci
+2019-03-15T03:16:43.090Z,19.4716663,-155.9071655,8.22,1.8,md,20,248,0.0187,0.16,hv,hv70865842,2019-03-15T03:20:02.290Z,"3km SSE of Captain Cook, Hawaii",earthquake,0.93,0.54,0.41,4,automatic,hv,hv
+2019-03-15T03:11:51.260Z,33.7101667,-116.8098333,15.16,0.95,ml,32,82,0.07975,0.2,ci,ci38269519,2019-03-15T03:15:35.311Z,"9km ESE of Valle Vista, CA",earthquake,0.46,0.59,0.204,25,automatic,ci,ci
+2019-03-15T03:11:45.040Z,34.0196667,-117.487,0.66,1.28,ml,10,97,0.2107,0.29,ci,ci38269527,2019-03-15T03:15:51.754Z,"1km NNW of Glen Avon, CA",earthquake,0.93,31.61,0.277,14,automatic,ci,ci
+2019-03-15T03:09:48.180Z,33.5071667,-116.7721667,2.49,0.63,ml,21,64,0.02411,0.18,ci,ci38269511,2019-03-15T03:13:33.869Z,"11km WSW of Anza, CA",earthquake,0.24,0.31,0.126,15,automatic,ci,ci
+2019-03-15T02:38:24.670Z,38.8268318,-122.8311691,2.46,0.81,md,10,90,0.004781,0.03,nc,nc73152171,2019-03-15T02:54:03.010Z,"8km NW of The Geysers, CA",earthquake,0.46,1,0.25,2,automatic,nc,nc
+2019-03-15T02:24:27.137Z,57.6644,-155.9213,0,2.3,ml,,,,1.03,ak,ak0193ef3r15,2019-03-15T02:29:35.357Z,"116km W of Larsen Bay, Alaska",earthquake,,0.4,,,automatic,ak,ak
+2019-03-15T02:04:02.629Z,63.212,-151.1198,0,1.7,ml,,,,0.8,ak,ak0193eezete,2019-03-15T02:08:10.204Z,"110km W of Cantwell, Alaska",earthquake,,0.5,,,automatic,ak,ak
+2019-03-15T01:59:38.704Z,63.2527,-151.1984,0,2.1,ml,,,,0.89,ak,ak0193eepudi,2019-03-15T02:03:18.403Z,"113km W of Cantwell, Alaska",earthquake,,0.3,,,automatic,ak,ak
+2019-03-15T01:56:02.160Z,37.2953,-97.9225,5,2.2,mb_lg,,151,0.06,0.27,us,us1000jg4k,2019-03-15T02:44:12.340Z,"9km E of Harper, Kansas",earthquake,1.1,1.4,0.147,12,reviewed,us,us
+2019-03-15T01:53:11.270Z,34.6233333,-116.5723333,7.61,1.75,ml,20,50,0.04754,0.12,ci,ci38269471,2019-03-15T01:57:00.853Z,"39km WSW of Ludlow, CA",earthquake,0.22,1.11,0.159,28,automatic,ci,ci
+2019-03-15T01:47:37.610Z,33.4986667,-116.7648333,7.28,0.82,ml,22,84,0.07042,0.14,ci,ci38269463,2019-03-15T01:51:10.785Z,"10km SW of Anza, CA",earthquake,0.29,0.72,0.143,10,automatic,ci,ci
+2019-03-15T01:47:28.700Z,35.785,-115.4067,10.7,1.4,ml,6,227.28,0.449,0.05,nn,nn00680003,2019-03-15T01:50:23.299Z,"20km E of Sandy Valley, Nevada",earthquake,,9.4,,,automatic,nn,nn
+2019-03-15T01:46:40.460Z,34.6223333,-116.5651667,7.3,2.05,ml,27,53,0.05333,0.18,ci,ci38269455,2019-03-15T01:57:39.330Z,"39km WSW of Ludlow, CA",earthquake,0.29,1.57,0.124,27,automatic,ci,ci
+2019-03-15T01:42:08.824Z,59.5643,-152.9204,89.1,3.4,ml,,,,0.68,ak,ak0193eem4u6,2019-03-15T02:00:10.040Z,"65km WSW of Anchor Point, Alaska",earthquake,,0.3,,,automatic,ak,ak
+2019-03-15T01:21:50.460Z,18.7515,-66.7186,79,2.78,md,4,321,0.4064,0.43,pr,pr2019074002,2019-03-15T08:51:19.846Z,"30km N of Arecibo, Puerto Rico",earthquake,5.99,4.51,0.14,4,reviewed,pr,pr
+2019-03-15T01:14:49.600Z,19.0841,-66.8153,35,2.9,md,10,290,0.6839,0.53,pr,pr2019074001,2019-03-15T04:37:23.360Z,"66km N of Hatillo, Puerto Rico",earthquake,2.69,13.4,0.21,9,reviewed,pr,pr
+2019-03-15T01:13:24.350Z,36.2908,-98.1895,5,2.5,mb_lg,,58,0.27,0.15,us,us1000jg45,2019-03-15T01:29:28.598Z,"22km NNE of Okeene, Oklahoma",earthquake,1.1,1.7,0.076,45,reviewed,us,us
+2019-03-15T00:41:58.920Z,19.0566,-67.8023,101,3.12,md,3,228,1.258,0.11,pr,pr2019074000,2019-03-15T04:52:20.040Z,"113km NE of Punta Cana, Dominican Republic",earthquake,4.43,4.84,0.29,3,reviewed,pr,pr
+2019-03-15T00:37:39.424Z,65.4889,-153.2556,13.6,2.1,ml,,,,1.07,ak,ak0193edzp2o,2019-03-15T00:44:40.050Z,"65km WNW of Tanana, Alaska",earthquake,,0.4,,,automatic,ak,ak
+2019-03-15T00:30:01.940Z,-9.8039,124.7565,62.76,4.5,mb,,59,0.484,0.95,us,us1000jg3m,2019-03-15T01:53:55.040Z,"27km SE of Neob, Indonesia",earthquake,7,5.3,0.108,25,reviewed,us,us
+2019-03-15T00:27:20.020Z,33.5091667,-116.769,2.61,0.75,ml,25,35,0.02639,0.1,ci,ci38269423,2019-03-15T00:39:20.821Z,"10km WSW of Anza, CA",earthquake,0.15,0.18,0.117,16,reviewed,ci,ci
+2019-03-15T00:10:24.140Z,33.5085,-116.7695,2.56,0.72,ml,22,37,0.02606,0.11,ci,ci38269407,2019-03-15T00:35:00.726Z,"10km WSW of Anza, CA",earthquake,0.14,0.17,0.082,18,reviewed,ci,ci
+2019-03-15T00:07:31.580Z,62.6075,-150.4706,72.3,1.7,ml,,,,0.6,ak,ak0193edt90a,2019-03-15T00:12:13.244Z,"36km NNW of Talkeetna, Alaska",earthquake,,0.6,,,automatic,ak,ak
+2019-03-15T00:06:29.350Z,37.2975,-97.9209,3.83,2.3,mb_lg,,76,0.061,1.19,us,us1000jg31,2019-03-15T02:03:33.353Z,"9km E of Harper, Kansas",earthquake,1.7,2.4,0.12,19,reviewed,us,us
+2019-03-14T23:34:22.680Z,38.7808342,-122.7481689,0.38,1.56,md,18,66,0.009261,0.06,nc,nc73152146,2019-03-15T03:52:03.334Z,"1km ENE of The Geysers, CA",earthquake,0.21,0.63,0.16,6,automatic,nc,nc
+2019-03-14T23:29:20.503Z,38.5682,-118.532,7.9,0.5,ml,4,191.02,0.061,0.1247,nn,nn00679996,2019-03-14T23:44:59.236Z,"9km ENE of Hawthorne, Nevada",earthquake,,5.7,0,1,reviewed,nn,nn
+2019-03-14T23:26:39.766Z,64.9821,-147.3716,0.6,1.4,ml,,,,0.61,ak,ak0193d42yne,2019-03-14T23:36:45.727Z,"21km NNE of Badger, Alaska",explosion,,0.5,,,automatic,ak,ak
+2019-03-14T23:18:15.978Z,38.5619,-118.5093,6.7,0.2,ml,4,171.89,0.067,0.0631,nn,nn00679995,2019-03-14T23:38:49.470Z,"10km ENE of Hawthorne, Nevada",earthquake,,9.5,0.41,2,reviewed,nn,nn
+2019-03-14T23:18:14.950Z,36.0078333,-117.807,1.87,0.28,ml,9,121,0.03802,0.04,ci,ci38269391,2019-03-14T23:33:30.299Z,"12km NE of Little Lake, CA",earthquake,0.15,31.61,0.276,3,reviewed,ci,ci
+2019-03-14T23:16:49.710Z,38.8305016,-122.8088303,1.65,0.45,md,16,86,0.01646,0.04,nc,nc73152136,2019-03-14T23:18:25.600Z,"8km NW of The Geysers, CA",earthquake,0.27,0.5,0.11,4,automatic,nc,nc
+2019-03-14T23:14:51.650Z,38.793335,-122.7835007,1.59,0.43,md,9,142,0.003455,0.03,nc,nc73152131,2019-03-14T23:16:25.669Z,"3km NW of The Geysers, CA",earthquake,0.46,0.66,0.12,2,automatic,nc,nc
+2019-03-14T23:10:47.140Z,51.3892,-178.5457,61.73,3.8,mb,,268,0.398,0.97,us,us1000jg2h,2019-03-15T01:48:35.040Z,"41km ENE of Amatignak Island, Alaska",earthquake,8,12.8,0.169,9,reviewed,us,us
+2019-03-14T23:07:43.160Z,19.3091667,-155.209,5.84,0.79,md,16,101,0.03147,0.06,hv,hv70865437,2019-03-15T00:30:55.060Z,"13km SSE of Volcano, Hawaii",earthquake,0.39,1.11,0.048,8,reviewed,hv,hv
+2019-03-14T23:02:47.890Z,9.6451,126.2397,44.57,4.6,mb,,110,2.641,0.65,us,us1000jg21,2019-03-15T01:47:23.040Z,"17km SSE of General Luna, Philippines",earthquake,5.8,7.9,0.074,55,reviewed,us,us
+2019-03-14T23:02:28.950Z,38.7938347,-122.783165,1.76,0.43,md,11,90,0.003772,0.04,nc,nc73152126,2019-03-14T23:04:05.641Z,"3km NW of The Geysers, CA",earthquake,0.31,0.65,0.12,2,automatic,nc,nc
+2019-03-14T22:57:34.060Z,19.4058342,-155.2814941,0,1.7,md,18,39,0.01202,0.09,hv,hv70865412,2019-03-14T23:00:47.370Z,"5km WSW of Volcano, Hawaii",earthquake,0.13,0.21,0.39,15,automatic,hv,hv
+2019-03-14T22:57:28.950Z,38.7938347,-122.7868347,1.32,0.86,md,9,130,0.00107,0.03,nc,nc73152121,2019-03-14T23:50:02.989Z,"3km NW of The Geysers, CA",earthquake,0.33,0.73,0.03,2,automatic,nc,nc
+2019-03-14T22:49:58.490Z,17.9578,-66.1555,16,1.58,md,5,207,0.0493,0.09,pr,pr2019073019,2019-03-15T00:11:29.907Z,"1km ENE of Jobos, Puerto Rico",earthquake,0.69,0.47,0.42,4,reviewed,pr,pr
+2019-03-14T22:48:10.526Z,38.7873,-117.0444,8.9,1.3,ml,7,230.48,0.117,0.374,nn,nn00679988,2019-03-14T22:55:44.328Z,"76km E of Gabbs, Nevada",explosion,,2.8,0.4,6,reviewed,nn,nn
+2019-03-14T22:46:07.753Z,63.4549,-149.0213,7.3,1.4,ml,,,,0.71,ak,ak0193d3lqw7,2019-03-14T22:49:24.572Z,"7km NNW of Cantwell, Alaska",earthquake,,0.3,,,automatic,ak,ak
+2019-03-14T22:44:43.540Z,33.4991667,-116.797,2.33,0.46,ml,16,108,0.01346,0.1,ci,ci38269367,2019-03-14T22:55:11.285Z,"9km NE of Aguanga, CA",earthquake,0.19,0.18,0.11,5,reviewed,ci,ci
+2019-03-14T22:43:17.590Z,38.8381653,-122.8303299,2.78,0.72,md,14,106,0.01547,0.05,nc,nc73152116,2019-03-14T23:26:03.831Z,"9km NW of The Geysers, CA",earthquake,0.34,0.94,0.21,2,automatic,nc,nc
+2019-03-14T22:28:54.571Z,39.917,-120.0483,8.4,0.7,ml,4,182.63,0.174,0.1226,nn,nn00679992,2019-03-14T23:17:19.487Z,"27km NNW of Cold Springs, Nevada",earthquake,,6.7,0.32,3,reviewed,nn,nn
+2019-03-14T22:24:17.360Z,33.0573333,-114.9791667,-0.2,1.34,ml,8,193,0.08488,0.25,ci,ci38269351,2019-03-14T22:41:17.619Z,"46km NNW of Los Algodones, B.C., MX",quarry blast,1.26,31.61,0.073,4,reviewed,ci,ci
+2019-03-14T22:11:14.120Z,19.5028,-66.3583,76,3.21,md,8,312,1.2219,0.46,pr,pr2019073018,2019-03-15T02:08:39.040Z,"106km N of Tierras Nuevas Poniente, Puerto Rico",earthquake,6.49,15.74,0.31,8,reviewed,pr,pr
+2019-03-14T22:10:27.110Z,34.1606667,-116.5225,2.01,1.02,ml,18,60,0.1033,0.18,ci,ci38269319,2019-03-14T22:35:12.282Z,"10km WNW of Yucca Valley, CA",earthquake,0.32,0.61,0.099,15,reviewed,ci,ci
+2019-03-14T22:01:46.160Z,33.487,-116.7903333,4.99,0.28,ml,13,214,0.02665,0.07,ci,ci38269303,2019-03-14T22:30:22.527Z,"8km NE of Aguanga, CA",earthquake,0.33,0.4,0.074,5,reviewed,ci,ci
+2019-03-14T21:58:51.540Z,37.6221667,-118.8193333,1.31,0.57,md,9,191,0.02052,0.04,nc,nc73152111,2019-03-14T22:52:02.638Z,"14km WNW of Toms Place, CA",earthquake,0.46,0.99,0.3,9,reviewed,nc,nc
+2019-03-14T21:54:25.981Z,65.4531,-148.1283,0,1.9,ml,,,,0.83,ak,ak0193d322fa,2019-03-14T21:58:04.252Z,"67km N of Ester, Alaska",earthquake,,0.5,,,automatic,ak,ak
+2019-03-14T21:53:17.670Z,38.836,-122.7841667,2.58,0.23,md,18,68,0.005391,0.04,nc,nc73152106,2019-03-14T23:26:07.832Z,"6km WNW of Cobb, CA",earthquake,0.3,0.72,0.065,2,reviewed,nc,nc
+2019-03-14T21:52:14.650Z,1.2427,126.4721,52.38,4.5,mb,,87,1.009,0.81,us,us1000jg00,2019-03-15T01:43:16.040Z,"111km WNW of Kota Ternate, Indonesia",earthquake,8.7,4,0.106,26,reviewed,us,us
+2019-03-14T21:46:42.960Z,-2.9812,146.6233,10,4.7,mb,,64,1.191,0.73,us,us1000jfzf,2019-03-15T01:39:26.040Z,"128km SW of Lorengau, Papua New Guinea",earthquake,9,1.9,0.103,29,reviewed,us,us
+2019-03-14T21:38:49.090Z,18.159,-66.8895,8,2.1,md,4,159,0.2315,0.09,pr,pr2019073017,2019-03-15T00:11:06.843Z,"9km W of Adjuntas, Puerto Rico",earthquake,0.53,10.92,0.13,4,reviewed,pr,pr
+2019-03-14T21:32:03.840Z,33.4993333,-116.7956667,2.5,0.94,ml,26,68,0.01358,0.13,ci,ci38269247,2019-03-14T22:05:57.822Z,"9km NE of Aguanga, CA",earthquake,0.14,0.17,0.125,17,reviewed,ci,ci
+2019-03-14T21:28:47.945Z,38.0464,-118.7323,8.9,0.8,ml,6,128.66,0.042,0.1536,nn,nn00679991,2019-03-14T23:11:09.093Z,"48km NNE of Mammoth Lakes, California",earthquake,,3.7,0.28,2,reviewed,nn,nn
+2019-03-14T21:13:02.990Z,38.7953339,-122.7818298,-0.5,1.01,md,10,106,0.005222,0.05,nc,nc73152091,2019-03-14T21:34:03.189Z,"3km NW of The Geysers, CA",earthquake,0.31,1.85,0.18,3,automatic,nc,nc
+2019-03-14T21:12:35.110Z,38.7941667,-122.7795,-0.5,2.49,md,41,72,0.006652,0.05,nc,nc73152086,2019-03-15T03:11:02.100Z,"3km NW of The Geysers, CA",earthquake,0.11,0.21,0.201,10,reviewed,nc,nc
+2019-03-14T21:12:31.280Z,38.795,-122.7795,-0.16,1.17,md,31,72,0.006825,0.05,nc,nc73152096,2019-03-15T02:56:04.021Z,"3km NW of The Geysers, CA",earthquake,0.11,0.24,0.285,7,reviewed,nc,nc
+2019-03-14T21:12:23.430Z,19.3445,-155.2043333,5.4,0.76,md,25,68,0.03098,0.11,hv,hv70865287,2019-03-15T01:40:19.950Z,"10km SSE of Volcano, Hawaii",earthquake,0.34,0.78,0.054,7,reviewed,hv,hv
+2019-03-14T21:08:10.980Z,39.7928333,-122.9065,5.96,1.6,md,21,102,0.1789,0.06,nc,nc73152081,2019-03-15T01:21:04.471Z,"22km NW of Alder Springs, CA",earthquake,0.25,1.4,0.231,20,reviewed,nc,nc
+2019-03-14T20:52:34.220Z,33.4965,-116.7875,5.23,0.31,ml,12,112,0.0805,0.08,ci,ci38269183,2019-03-14T21:00:06.702Z,"9km NE of Aguanga, CA",earthquake,0.21,0.66,0.081,5,reviewed,ci,ci
+2019-03-14T20:19:25.520Z,36.5406667,-121.1426667,7.72,1.12,md,16,108,0.04338,0.08,nc,nc73152071,2019-03-15T02:29:02.865Z,"1km N of Pinnacles, CA",earthquake,0.32,0.58,0.183,14,reviewed,nc,nc
+2019-03-14T20:18:03.330Z,37.9585,-122.1201667,10.16,1.56,md,37,61,0.05545,0.07,nc,nc73152066,2019-03-15T01:47:04.625Z,"5km SW of Pacheco, CA",earthquake,0.19,0.34,0.238,24,reviewed,nc,nc
+2019-03-14T20:14:36.930Z,38.2783333,-108.9011667,1.23,1.69,md,9,84,0.03042,0.12,uu,uu60316357,2019-03-14T21:09:26.094Z,"56km N of Dove Creek, Colorado",earthquake,0.43,0.47,0.135,4,reviewed,uu,uu
+2019-03-14T20:08:48.716Z,60.9103,-151.0654,7.5,2.4,ml,,,,0.75,ak,ak0193d26tmx,2019-03-14T20:17:34.474Z,"27km NNE of Nikiski, Alaska",earthquake,,0.2,,,automatic,ak,ak
+2019-03-14T20:06:07.080Z,38.8390007,-122.7826691,0.79,0.48,md,8,147,0.006023,0.01,nc,nc73152061,2019-03-14T20:27:04.823Z,"6km WNW of Cobb, CA",earthquake,0.39,0.58,0.06,2,automatic,nc,nc
+2019-03-14T19:53:20.660Z,40.2956667,-120.67,2.72,1.79,md,10,157,0.2821,0.12,nc,nc73152056,2019-03-15T00:30:03.198Z,"12km SW of Johnstonville, CA",earthquake,0.66,9.13,0.069,8,reviewed,nc,nc
+2019-03-14T19:47:22.270Z,39.0453333,-110.9625,16.94,1.76,ml,15,154,0.207,0.22,uu,uu60316347,2019-03-14T19:58:37.180Z,"15km ESE of Ferron, Utah",earthquake,0.64,0.98,0.123,3,reviewed,uu,uu
+2019-03-14T19:45:45.220Z,39.052,-110.9588333,8.19,1.52,ml,12,152,0.2133,0.17,uu,uu60316342,2019-03-14T20:03:16.760Z,"15km ESE of Ferron, Utah",earthquake,0.88,3.62,0.059,3,reviewed,uu,uu
+2019-03-14T19:44:25.710Z,34.63,-117.1251667,-0.88,1.47,ml,22,62,0.1823,0.25,ci,ci38269127,2019-03-14T20:12:47.848Z,"15km NNE of Apple Valley, CA",quarry blast,0.5,31.61,0.133,37,reviewed,ci,ci
+2019-03-14T19:36:30.680Z,33.5063333,-116.771,2.83,0.99,ml,30,42,0.02525,0.12,ci,ci38269111,2019-03-14T20:00:28.910Z,"10km WSW of Anza, CA",earthquake,0.15,0.45,0.124,24,reviewed,ci,ci
+2019-03-14T19:26:20.420Z,19.4173336,-155.2769928,0.3,1.8,md,16,71,0.006713,0.11,hv,hv70865142,2019-03-14T19:32:01.030Z,"4km WSW of Volcano, Hawaii",earthquake,0.18,0.23,0.21,14,automatic,hv,hv
+2019-03-14T19:22:38.079Z,61.4854,-149.8957,33.2,1.9,ml,,,,0.55,ak,ak0193d1od7z,2019-03-14T19:32:33.485Z,"5km SE of Big Lake, Alaska",earthquake,,0.2,,,automatic,ak,ak
+2019-03-14T19:13:51.489Z,62.2966,-149.0023,28.8,2,ml,,,,0.82,ak,ak0193d1mgto,2019-03-14T19:16:57.309Z,"46km ENE of Y, Alaska",earthquake,,0.3,,,automatic,ak,ak
+2019-03-14T19:03:08.930Z,33.6626667,-116.7618333,11.04,1.31,ml,47,32,0.06261,0.12,ci,ci38269063,2019-03-14T19:45:13.940Z,"10km SSW of Idyllwild, CA",earthquake,0.14,0.25,0.23,25,reviewed,ci,ci
+2019-03-14T18:18:37.226Z,63.0825,-150.6206,118.6,1.8,ml,,,,0.24,ak,ak0193d122rz,2019-03-14T19:43:26.648Z,"88km NNW of Talkeetna, Alaska",earthquake,,0.7,,,reviewed,ak,ak
+2019-03-14T17:50:10.053Z,36.7067,-116.2197,0,-0.1,ml,10,118.33,0.022,0.142,nn,nn00679981,2019-03-14T21:20:21.911Z,"53km ESE of Beatty, Nevada",earthquake,,0,0.44,5,reviewed,nn,nn
+2019-03-14T17:44:32.450Z,66.2529,-157.2688,7,2.7,ml,,,,0.77,ak,ak0193d0m7ca,2019-03-15T01:47:09.769Z,"74km SSW of Kobuk, Alaska",earthquake,,0.9,,,reviewed,ak,ak
+2019-03-14T17:34:32.613Z,69.5648,-144.8641,0.8,2.3,ml,,,,1.08,ak,ak0193d0k2g2,2019-03-14T17:44:56.482Z,"79km SW of Kaktovik, Alaska",earthquake,,0.7,,,automatic,ak,ak
+2019-03-14T17:29:57.830Z,33.1568333,-115.9718333,7.52,1.93,ml,82,33,0.1235,0.19,ci,ci38268959,2019-03-14T18:31:46.000Z,"15km E of Ocotillo Wells, CA",earthquake,0.13,0.5,0.156,25,reviewed,ci,ci
+2019-03-14T17:28:55.390Z,5.3294,94.2146,35,4.6,mb,,179,2.723,1,us,us1000jfqx,2019-03-14T20:49:33.040Z,"125km WSW of Banda Aceh, Indonesia",earthquake,10.6,2,0.084,42,reviewed,us,us
+2019-03-14T17:11:26.880Z,36.0498333,-118.01,4.5,0.38,ml,9,265,0.1057,0.08,ci,ci38268943,2019-03-14T18:00:37.859Z,"6km W of Coso Junction, CA",earthquake,0.39,0.43,0.079,3,reviewed,ci,ci
+2019-03-14T17:11:23.149Z,61.3828,-149.9292,38.7,1.7,ml,,,,0.53,ak,ak0193d0f3zu,2019-03-14T17:14:44.755Z,"15km S of Big Lake, Alaska",earthquake,,0.8,,,automatic,ak,ak
+2019-03-14T17:06:40.288Z,53.8562,-166.5118,10.1,1,ml,,,,0.51,ak,ak0193d0e2v0,2019-03-14T19:30:22.512Z,"2km SE of Unalaska, Alaska",earthquake,,0.5,,,reviewed,ak,ak
+2019-03-14T16:55:36.140Z,36.0228333,-117.7995,1.68,1.03,ml,12,133,0.02786,0.1,ci,ci38268935,2019-03-14T17:58:04.924Z,"14km NE of Little Lake, CA",earthquake,0.21,0.24,0.169,9,reviewed,ci,ci
+2019-03-14T16:53:20.570Z,33.725,-116.8271667,16.26,0.91,ml,23,79,0.08901,0.09,ci,ci38268927,2019-03-14T17:55:32.003Z,"7km ESE of Valle Vista, CA",earthquake,0.27,0.31,0.13,13,reviewed,ci,ci
+2019-03-14T16:48:35.149Z,62.081,-149.619,57,1.8,ml,,,,0.44,ak,ak0193d01mt7,2019-03-14T16:53:00.065Z,"15km SE of Y, Alaska",earthquake,,0.6,,,automatic,ak,ak
+2019-03-14T16:42:53.520Z,38.8083344,-122.8241653,1.07,0.56,md,11,120,0.003952,0.07,nc,nc73152036,2019-03-14T19:01:04.324Z,"7km WNW of The Geysers, CA",earthquake,0.35,0.81,,1,automatic,nc,nc
+2019-03-14T16:42:21.414Z,36.3761,-116.934,11.9,0.5,ml,8,258.87,0.107,0.1743,nn,nn00679971,2019-03-14T19:32:45.234Z,"61km SSW of Beatty, Nevada",earthquake,,2.1,0.28,2,reviewed,nn,nn
+2019-03-14T16:32:13.940Z,40.4083333,-124.2595,27.52,2.16,md,18,111,0.08598,0.09,nc,nc73152031,2019-03-15T03:26:03.189Z,"10km NNE of Petrolia, CA",earthquake,0.49,0.57,0.315,20,reviewed,nc,nc
+2019-03-14T16:21:25.430Z,36.126,-117.7021667,2.02,1.58,ml,21,50,0.07174,0.14,ci,ci38268863,2019-03-14T17:51:21.490Z,"24km ENE of Coso Junction, CA",earthquake,0.18,0.31,0.121,21,reviewed,ci,ci
+2019-03-14T16:13:04.683Z,38.5836,-118.504,8.9,-0.1,ml,4,201.32,0.047,0.1537,nn,nn00679969,2019-03-14T19:23:30.039Z,"12km ENE of Hawthorne, Nevada",earthquake,,6.8,0,1,reviewed,nn,nn
+2019-03-14T15:58:53.150Z,18.0911,-66.8926,20,2.08,md,9,92,0.1168,0.22,pr,pr2019073016,2019-03-14T18:32:33.280Z,"5km NNE of Lluveras, Puerto Rico",earthquake,0.73,1.86,0.2,8,reviewed,pr,pr
+2019-03-14T15:47:45.680Z,46.146,-119.186666666667,-0.2,2.09,ml,16,160,,0.12,uw,uw61514012,2019-03-14T17:40:17.959Z,"5km WNW of Highland, Washington",explosion,0.4,31.61,0.173388830652614,12,reviewed,uw,uw
+2019-03-14T15:39:41.976Z,38.0579,-120.4521,6.1,1.7,ml,6,220.28,0.057,0.2227,nn,nn00679945,2019-03-14T17:04:38.099Z,"5km WNW of Columbia, California",earthquake,,3.8,0.07,3,reviewed,nn,nn
+2019-03-14T15:23:29.480Z,35.4215,-120.7176667,3.09,1.68,md,42,81,0.03006,0.08,nc,nc73152026,2019-03-15T02:04:03.713Z,"9km SSW of Atascadero, CA",earthquake,0.19,0.49,0.258,28,reviewed,nc,nc
+2019-03-14T15:21:08.100Z,38.8198318,-122.7965012,2.65,1.09,md,24,54,0.01118,0.03,nc,nc73152021,2019-03-14T15:51:04.216Z,"6km NW of The Geysers, CA",earthquake,0.22,0.43,0.07,5,automatic,nc,nc
+2019-03-14T15:15:51.713Z,63.516,-147.405,24.3,1.3,ml,,,,1.01,ak,ak0193cz94ne,2019-03-14T19:27:00.865Z,"78km E of Cantwell, Alaska",earthquake,,2.2,,,reviewed,ak,ak
+2019-03-14T15:13:03.950Z,32.7378333,-117.378,14.8,1.43,ml,35,250,0.1153,0.14,ci,ci38268767,2019-03-14T17:38:57.756Z,"16km SW of La Jolla, CA",earthquake,0.29,0.4,0.186,18,reviewed,ci,ci
+2019-03-14T15:09:48.730Z,-27.9085,-66.7764,165.98,4.8,mb,,32,2.35,1.18,us,us1000jfl5,2019-03-14T15:27:56.040Z,"38km SE of Belen, Argentina",earthquake,4,7.1,0.064,74,reviewed,us,us
+2019-03-14T14:58:52.450Z,37.507,-118.7608333,4.5,0.93,md,18,158,0.09907,0.05,nc,nc73152016,2019-03-14T20:28:29.609Z,"9km SW of Toms Place, CA",earthquake,0.49,1.39,0.174,17,reviewed,nc,nc
+2019-03-14T14:49:30.215Z,37.0021,-116.3962,9.9,0,ml,4,139.03,0.011,0.1104,nn,nn00679967,2019-03-14T19:17:19.435Z,"33km ENE of Beatty, Nevada",earthquake,,2.8,0.62,2,reviewed,nn,nn
+2019-03-14T14:48:55.680Z,38.8216667,-122.7986679,2.35,0.93,md,14,57,0.009075,0.04,nc,nc73152011,2019-03-14T15:19:03.048Z,"6km NW of The Geysers, CA",earthquake,0.3,0.57,0.07,2,automatic,nc,nc
+2019-03-14T14:44:56.220Z,33.1758333,-116.1283333,5.03,1.36,ml,50,68,0.03879,0.22,ci,ci38268735,2019-03-14T18:15:48.310Z,"4km N of Ocotillo Wells, CA",earthquake,0.21,0.43,0.156,26,reviewed,ci,ci
+2019-03-14T14:16:42.932Z,63.8221,-149.1258,114.8,3.2,ml,,,,0.54,ak,ak0193cynx9p,2019-03-14T19:19:48.491Z,"8km WSW of Healy, Alaska",earthquake,,0.5,,,reviewed,ak,ak
+2019-03-14T14:15:54.840Z,18.1548,-67.445,108,2.8,md,3,318,0.4416,0.23,pr,pr2019073015,2019-03-14T17:53:16.134Z,"27km SW of Stella, Puerto Rico",earthquake,4.89,2.24,0.08,2,reviewed,pr,pr
+2019-03-14T14:09:42.070Z,44.7831667,-110.8351667,4.8,0.82,ml,11,94,0.01208,0.15,uu,uu60316327,2019-03-14T14:17:55.560Z,"25km ENE of West Yellowstone, Montana",earthquake,0.44,0.57,0.297,3,reviewed,uu,uu
+2019-03-14T14:05:41.314Z,50.1239,-179.8751,27.9,3.6,ml,,,,0.5,ak,ak0193cylp28,2019-03-14T19:14:16.230Z,"137km SSW of Amatignak Island, Alaska",earthquake,,2.7,,,reviewed,ak,ak
+2019-03-14T14:01:21.210Z,37.4865,-113.8661667,8.15,1.64,md,8,151,0.02574,0.12,uu,uu60316322,2019-03-14T14:27:48.110Z,"16km SW of Enterprise, Utah",earthquake,0.59,0.43,0.156,5,reviewed,uu,uu
+2019-03-14T14:00:23.070Z,44.1181666666667,-121.340833333333,3.47,1.06,ml,6,335,,1.45,uw,uw61514007,2019-03-14T17:35:12.470Z,"6km NNW of Bend, Oregon",explosion,27.65,31.61,0.0625773783962889,4,reviewed,uw,uw
+2019-03-14T13:59:59.030Z,44.7815,-110.8305,4.29,1.06,ml,12,92,0.0158,0.14,uu,uu60316317,2019-03-14T14:23:05.860Z,"25km ENE of West Yellowstone, Montana",earthquake,0.31,0.61,0.222,3,reviewed,uu,uu
+2019-03-14T13:53:42.130Z,40.748,-111.967,2.87,0.94,md,9,73,0.02182,0.17,uu,uu60316312,2019-03-14T15:44:48.050Z,"6km WSW of Salt Lake City, Utah",earthquake,0.63,1.49,0.47,5,reviewed,uu,uu
+2019-03-14T13:44:51.490Z,37.5078333,-113.8413333,7,2.67,ml,15,69,0.04759,0.18,uu,uu60316307,2019-03-15T05:17:30.820Z,"13km SW of Enterprise, Utah",earthquake,0.45,0.78,0.122,6,reviewed,uu,uu
+2019-03-14T13:43:01.950Z,37.5081667,-113.8398333,6.37,2.38,md,12,68,0.04824,0.18,uu,uu60316302,2019-03-14T14:25:43.260Z,"12km SW of Enterprise, Utah",earthquake,0.48,0.73,0.085,7,reviewed,uu,uu
+2019-03-14T13:34:04.790Z,38.8143349,-122.8216629,3.1,0.56,md,11,92,0.0128,0.04,nc,nc73152006,2019-03-14T14:34:02.781Z,"7km NW of The Geysers, CA",earthquake,0.44,0.94,,1,automatic,nc,nc
+2019-03-14T13:27:59.876Z,62.7607,-149.0026,52.8,2.3,ml,,,,0.52,ak,ak0193cy4vur,2019-03-14T13:38:00.230Z,"70km S of Cantwell, Alaska",earthquake,,1.5,,,automatic,ak,ak
+2019-03-14T13:10:46.950Z,39.0543333,-110.96,16.06,1.89,ml,20,118,0.2141,0.24,uu,uu60316297,2019-03-14T15:30:23.950Z,"15km ESE of Ferron, Utah",earthquake,0.72,0.89,0.125,3,reviewed,uu,uu
+2019-03-14T12:56:31.914Z,59.9319,-141.5672,1.2,2.3,ml,,,,0.82,ak,ak0193cxplvb,2019-03-14T13:00:01.098Z,"50km ESE of Cape Yakataga, Alaska",earthquake,,0.2,,,automatic,ak,ak
+2019-03-14T12:55:11.620Z,38.8358345,-122.8095016,2.36,0.56,md,10,93,0.01243,0.03,nc,nc73152001,2019-03-14T14:08:03.633Z,"8km WNW of Cobb, CA",earthquake,0.35,1.14,,1,automatic,nc,nc
+2019-03-14T12:37:25.183Z,38.5088,-118.3758,8.1,0.6,ml,5,157.5,0.08,0.0861,nn,nn00679966,2019-03-14T19:14:13.429Z,"21km E of Hawthorne, Nevada",earthquake,,4,0.2,2,reviewed,nn,nn
+2019-03-14T12:31:10.200Z,33.504,-116.7683333,2.42,1.05,ml,41,63,0.02802,0.19,ci,ci38268591,2019-03-14T13:18:13.530Z,"10km WSW of Anza, CA",earthquake,0.19,0.31,0.11,26,reviewed,ci,ci

@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.github.colaalex.cataclysmar.R;
 import com.github.colaalex.cataclysmar.pins.FirePin;
+import com.github.colaalex.cataclysmar.pojo.Constants;
 import com.github.colaalex.cataclysmar.workers.CSVWorker;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
@@ -95,15 +96,16 @@ public class SceneActivity extends AppCompatActivity {
 
     private void passIntent() {
         int selectedTime = getIntent().getIntExtra("time", 0);
+        int selectedDisaster = getIntent().getIntExtra("disaster", 0);
         switch (selectedTime) {
             case R.id.btnDay:
-                setupPins(DAY);
+                setupPins(DAY, selectedDisaster);
                 break;
             case R.id.btnWeek:
-                setupPins(TWO_DAYS);
+                setupPins(TWO_DAYS, selectedDisaster);
                 break;
             case R.id.btnMonth:
-                setupPins(WEEK);
+                setupPins(WEEK, selectedDisaster);
                 break;
         }
     }
@@ -142,7 +144,7 @@ public class SceneActivity extends AppCompatActivity {
         Log.d("Setup Pin", "Finished drawing pin");
     }
 
-    private void setupPins(int period) {
+    private void setupPins(int period, int selectedDisaster) {
 
         Log.d("Setup Pins", "Method started");
 
@@ -152,20 +154,30 @@ public class SceneActivity extends AppCompatActivity {
             CSVWorker worker;
 
             switch (period) {
+                //TODO добавить данные по землетрясениям
                 case WEEK:
-                    worker = new CSVWorker(getResources().openRawResource(R.raw.data7));
+                    if (selectedDisaster == R.id.btnFire)
+                        worker = new CSVWorker(getResources().openRawResource(R.raw.data7), Constants.FIRE);
+                    else
+                        worker = new CSVWorker(getResources().openRawResource(R.raw.data24), Constants.QUAKE);
                     break;
                 case DAY:
-                    worker = new CSVWorker(getResources().openRawResource(R.raw.data24));
+                    if (selectedDisaster == R.id.btnFire)
+                        worker = new CSVWorker(getResources().openRawResource(R.raw.data24), Constants.FIRE);
+                    else
+                        worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
                     break;
                 case TWO_DAYS:
-                    worker = new CSVWorker(getResources().openRawResource(R.raw.data48));
+                    if (selectedDisaster == R.id.btnFire)
+                        worker = new CSVWorker(getResources().openRawResource(R.raw.data48), Constants.FIRE);
+                    else
+                        worker = new CSVWorker(getResources().openRawResource(R.raw.data24), Constants.QUAKE);
                     break;
                 default:
                     throw new RuntimeException("Couldn't understand query");
             }
 
-            List<FirePin> coordinates = worker.read();
+            List<FirePin> coordinates = worker.readFire();
 
             for (FirePin firePin : coordinates) {
                 runOnUiThread(() -> setupPin(firePin));
