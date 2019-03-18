@@ -1,6 +1,5 @@
 package com.github.colaalex.cataclysmar.pojo;
 
-import java.io.Serializable;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;

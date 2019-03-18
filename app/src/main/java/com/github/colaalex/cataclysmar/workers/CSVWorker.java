@@ -3,6 +3,7 @@ package com.github.colaalex.cataclysmar.workers;
 import android.util.SparseArray;
 
 import com.github.colaalex.cataclysmar.pins.FirePin;
+import com.github.colaalex.cataclysmar.pojo.Quake;
 import com.github.colaalex.cataclysmar.pojo.Wildfire;
 
 import java.io.BufferedReader;
@@ -51,7 +52,7 @@ public class CSVWorker {
         this.disaster = disaster;
     }
 
-    public List<FirePin> readFire() {
+    public List<Wildfire> readFire() {
 
         if (disaster == QUAKE)
             return readQuake(); //TODO убрать этот сверхстрашный костыль
@@ -60,7 +61,7 @@ public class CSVWorker {
         for (int i = 0; i < 5; i++)
             wildfires.append(i, new ArrayList<>());
 
-        List<FirePin> coordinates = new ArrayList<>();
+        List<Wildfire> coordinates = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         try {
@@ -99,12 +100,8 @@ public class CSVWorker {
                 return wildfire.getConfidence() < t1.getConfidence() ? -1 : 1;
             }));
             for (int j = 0; j < len; j++) {
-//                List<Float> pair = new ArrayList<>();
-//                pair.add(wildfires.get(i).get(j).getLatitude());
-//                pair.add(wildfires.get(i).get(j).getLongitude());
-//                coordinates.add(pair);
                 try {
-                    coordinates.add(new FirePin(wildfires.get(i).get(j)));
+                    coordinates.add(wildfires.get(i).get(j));
                 } catch (IndexOutOfBoundsException e) {
                     e.printStackTrace();
                 }
@@ -114,13 +111,13 @@ public class CSVWorker {
         return coordinates;
     }
 
-    private List<FirePin> readQuake() {
+    private List<Wildfire> readQuake() {
         //пока что FirePin, как добавлю QuakePin, заменю
         SparseArray<List<Wildfire>> wildfires = new SparseArray<>(5);
         for (int i = 0; i < 5; i++)
             wildfires.append(i, new ArrayList<>());
 
-        List<FirePin> coordinates = new ArrayList<>();
+        List<Wildfire> coordinates = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         try {
@@ -160,7 +157,7 @@ public class CSVWorker {
             }));
             for (int j = 0; j < len; j++) {
                 try {
-                    coordinates.add(new FirePin(wildfires.get(i).get(j)));
+                    coordinates.add(wildfires.get(i).get(j));
                 } catch (IndexOutOfBoundsException e) {
                     e.printStackTrace();
                 }

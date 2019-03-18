@@ -2,7 +2,7 @@ package com.github.colaalex.cataclysmar.pojo;
 
 import java.io.Serializable;
 
-public class Disaster implements Serializable {
+public abstract class Disaster implements Serializable {
     protected float latitude;
     protected float longitude;
 

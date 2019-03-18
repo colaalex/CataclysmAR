@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.github.colaalex.cataclysmar.R;
 import com.github.colaalex.cataclysmar.pins.FirePin;
 import com.github.colaalex.cataclysmar.pojo.Constants;
+import com.github.colaalex.cataclysmar.pojo.Wildfire;
 import com.github.colaalex.cataclysmar.workers.CSVWorker;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
@@ -120,26 +121,12 @@ public class SceneActivity extends AppCompatActivity {
                 ));
     }
 
-    private void setupPin(FirePin firePin) {
+    private void setupPin(Wildfire wildfire) {
         Log.d("Setup Pin", "Started drawing pin");
 
-        Node pinNode = new Node();
-        float x = firePin.getX();
-        float y = firePin.getY();
-        float z = firePin.getZ();
-        MaterialFactory.makeOpaqueWithColor(this, new Color(android.graphics.Color.RED))
-                .thenAccept(
-                        material -> {
-                            pinRenderable =
-                                    ShapeFactory.makeCylinder(0.001f, 0.01f, Vector3.zero(), material);
-                            pinNode.setRenderable(pinRenderable);
-                            pinNode.setParent(earth);
-                            pinNode.setLocalPosition(new Vector3(x, 0.5f * RADIUS + y, z));
-                            pinNode.setLocalRotation(firePin.getRotationQuaternion());
-                        }
-                );
-
-        pinNode.setOnTapListener((hitTestResult, motionEvent) -> ((TextView) cardRenderable.getView()).setText(firePin.toString()));
+        FirePin firePin = new FirePin(wildfire);
+        firePin.setup(this, earth);
+        firePin.setOnTapListener((hitTestResult, motionEvent) -> ((TextView) cardRenderable.getView()).setText(firePin.toString()));
 
         Log.d("Setup Pin", "Finished drawing pin");
     }
@@ -177,10 +164,10 @@ public class SceneActivity extends AppCompatActivity {
                     throw new RuntimeException("Couldn't understand query");
             }
 
-            List<FirePin> coordinates = worker.readFire();
+            List<Wildfire> coordinates = worker.readFire();
 
-            for (FirePin firePin : coordinates) {
-                runOnUiThread(() -> setupPin(firePin));
+            for (Wildfire wildfire : coordinates) {
+                runOnUiThread(() -> setupPin(wildfire));
                 try {
                     Thread.sleep(16);
                 } catch (InterruptedException e) {

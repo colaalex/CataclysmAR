@@ -1,8 +1,13 @@
 package com.github.colaalex.cataclysmar.pins;
 
+import android.content.Context;
+import android.graphics.Color;
+
 import com.github.colaalex.cataclysmar.pojo.Wildfire;
+import com.google.ar.sceneform.Node;
 import com.google.ar.sceneform.math.Quaternion;
 import com.google.ar.sceneform.math.Vector3;
+import com.google.ar.sceneform.ux.TransformableNode;
 
 import androidx.annotation.NonNull;
 
@@ -12,24 +17,14 @@ import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static java.lang.Math.toRadians;
 
-public class FirePin {
+public class FirePin extends BasePin{
 
     private Wildfire wildfire;
 
-    private float latitude;
-    private float longitude;
-    private int confidence;
-    private Quaternion rotationQuaternion;
-
-    private float x;
-    private float y;
-    private float z;
-
     public FirePin(Wildfire wildfire) {
         this.wildfire = wildfire;
-        latitude = wildfire.getLatitude();
-        longitude = wildfire.getLongitude();
-        confidence = wildfire.getConfidence();
+        float latitude = wildfire.getLatitude();
+        float longitude = wildfire.getLongitude();
 
         Quaternion q1 = Quaternion.axisAngle(Vector3.forward(), latitude + 90);
         Quaternion q2 = Quaternion.axisAngle(Vector3.left(), longitude);
@@ -42,20 +37,8 @@ public class FirePin {
         z = (float) (RADIUS * sin(theta) * cos(phi));
     }
 
-    public Quaternion getRotationQuaternion() {
-        return rotationQuaternion;
-    }
-
-    public float getX() {
-        return x;
-    }
-
-    public float getY() {
-        return y;
-    }
-
-    public float getZ() {
-        return z;
+    public void setup(Context context, TransformableNode earth) {
+        setTextureAndLocation(context, Color.RED, earth);
     }
 
     @NonNull
