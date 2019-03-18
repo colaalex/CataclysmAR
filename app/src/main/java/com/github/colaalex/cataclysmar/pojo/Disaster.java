@@ -2,6 +2,8 @@ package com.github.colaalex.cataclysmar.pojo;
 
 import java.io.Serializable;
 
+import androidx.annotation.NonNull;
+
 public abstract class Disaster implements Serializable {
     protected float latitude;
     protected float longitude;
@@ -18,4 +20,8 @@ public abstract class Disaster implements Serializable {
     public float getLongitude() {
         return longitude;
     }
+
+    @NonNull
+    @Override
+    public abstract String toString();
 }
