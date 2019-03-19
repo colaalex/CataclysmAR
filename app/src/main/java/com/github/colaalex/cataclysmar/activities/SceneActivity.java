@@ -7,7 +7,10 @@ import android.widget.TextView;
 
 import com.github.colaalex.cataclysmar.R;
 import com.github.colaalex.cataclysmar.pins.FirePin;
+import com.github.colaalex.cataclysmar.pins.QuakePin;
 import com.github.colaalex.cataclysmar.pojo.Constants;
+import com.github.colaalex.cataclysmar.pojo.Disaster;
+import com.github.colaalex.cataclysmar.pojo.Quake;
 import com.github.colaalex.cataclysmar.pojo.Wildfire;
 import com.github.colaalex.cataclysmar.workers.CSVWorker;
 import com.google.ar.core.Anchor;
@@ -17,7 +20,6 @@ import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.Node;
 import com.google.ar.sceneform.Scene;
 import com.google.ar.sceneform.math.Vector3;
-import com.google.ar.sceneform.rendering.Color;
 import com.google.ar.sceneform.rendering.MaterialFactory;
 import com.google.ar.sceneform.rendering.Renderable;
 import com.google.ar.sceneform.rendering.ShapeFactory;
@@ -41,7 +43,6 @@ public class SceneActivity extends AppCompatActivity {
 
     private boolean isPlaced;
 
-    private Renderable pinRenderable;
     private TransformableNode earth;
     private Renderable earthRenderable;
     private Node infoCard;
@@ -121,12 +122,18 @@ public class SceneActivity extends AppCompatActivity {
                 ));
     }
 
-    private void setupPin(Wildfire wildfire) {
+    private void setupPin(Disaster disaster) {
         Log.d("Setup Pin", "Started drawing pin");
 
-        FirePin firePin = new FirePin(wildfire);
-        firePin.setup(this, earth);
-        firePin.setOnTapListener((hitTestResult, motionEvent) -> ((TextView) cardRenderable.getView()).setText(firePin.toString()));
+        if (disaster instanceof Wildfire) {
+            FirePin firePin = new FirePin((Wildfire) disaster);
+            firePin.setup(this, earth);
+            firePin.setOnTapListener((hitTestResult, motionEvent) -> ((TextView) cardRenderable.getView()).setText(firePin.toString()));
+        } else if (disaster instanceof Quake) {
+            QuakePin quakePin = new QuakePin((Quake) disaster);
+            quakePin.setup(this, earth);
+            quakePin.setOnTapListener((hitTestResult, motionEvent) -> ((TextView) cardRenderable.getView()).setText(quakePin.toString()));
+        }
 
         Log.d("Setup Pin", "Finished drawing pin");
     }
@@ -164,10 +171,10 @@ public class SceneActivity extends AppCompatActivity {
                     throw new RuntimeException("Couldn't understand query");
             }
 
-            List<Wildfire> coordinates = worker.readFire();
+            List<Disaster> coordinates = worker.read();
 
-            for (Wildfire wildfire : coordinates) {
-                runOnUiThread(() -> setupPin(wildfire));
+            for (Disaster disaster : coordinates) {
+                runOnUiThread(() -> setupPin(disaster));
                 try {
                     Thread.sleep(16);
                 } catch (InterruptedException e) {

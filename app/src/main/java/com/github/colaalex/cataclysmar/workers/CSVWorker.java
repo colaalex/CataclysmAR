@@ -2,7 +2,7 @@ package com.github.colaalex.cataclysmar.workers;
 
 import android.util.SparseArray;
 
-import com.github.colaalex.cataclysmar.pins.FirePin;
+import com.github.colaalex.cataclysmar.pojo.Disaster;
 import com.github.colaalex.cataclysmar.pojo.Quake;
 import com.github.colaalex.cataclysmar.pojo.Wildfire;
 
@@ -26,6 +26,7 @@ import static com.github.colaalex.cataclysmar.pojo.Constants.EURASIA_EAST;
 import static com.github.colaalex.cataclysmar.pojo.Constants.EURASIA_NORTH;
 import static com.github.colaalex.cataclysmar.pojo.Constants.EURASIA_SOUTH;
 import static com.github.colaalex.cataclysmar.pojo.Constants.EURASIA_WEST;
+import static com.github.colaalex.cataclysmar.pojo.Constants.FIRE;
 import static com.github.colaalex.cataclysmar.pojo.Constants.NAMERICA_EAST;
 import static com.github.colaalex.cataclysmar.pojo.Constants.NAMERICA_NORTH;
 import static com.github.colaalex.cataclysmar.pojo.Constants.NAMERICA_SOUTH;
@@ -35,6 +36,7 @@ import static com.github.colaalex.cataclysmar.pojo.Constants.SAMERICA_EAST;
 import static com.github.colaalex.cataclysmar.pojo.Constants.SAMERICA_NORTH;
 import static com.github.colaalex.cataclysmar.pojo.Constants.SAMERICA_SOUTH;
 import static com.github.colaalex.cataclysmar.pojo.Constants.SAMERICA_WEST;
+import static java.lang.Math.min;
 
 public class CSVWorker {
 
@@ -52,16 +54,24 @@ public class CSVWorker {
         this.disaster = disaster;
     }
 
-    public List<Wildfire> readFire() {
+    public List<Disaster> read() {
+        switch (disaster) {
+            case FIRE:
+                return readFire();
+            case QUAKE:
+                return readQuake();
+            default:
+                return null;
+        }
+    }
 
-        if (disaster == QUAKE)
-            return readQuake(); //TODO убрать этот сверхстрашный костыль
+    public List<Disaster> readFire() {
 
         SparseArray<List<Wildfire>> wildfires = new SparseArray<>(5);
         for (int i = 0; i < 5; i++)
             wildfires.append(i, new ArrayList<>());
 
-        List<Wildfire> coordinates = new ArrayList<>();
+        List<Disaster> coordinates = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         try {
@@ -111,13 +121,10 @@ public class CSVWorker {
         return coordinates;
     }
 
-    private List<Wildfire> readQuake() {
-        //пока что FirePin, как добавлю QuakePin, заменю
-        SparseArray<List<Wildfire>> wildfires = new SparseArray<>(5);
-        for (int i = 0; i < 5; i++)
-            wildfires.append(i, new ArrayList<>());
+    private List<Disaster> readQuake() {
+        List<Quake> quakes = new ArrayList<>();
 
-        List<Wildfire> coordinates = new ArrayList<>();
+        List<Disaster> coordinates = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         try {
@@ -129,11 +136,7 @@ public class CSVWorker {
                     float lat = Float.parseFloat(row[1]);
                     float lon = Float.parseFloat(row[2]);
 
-                    int cont = determineContinent(lat, lon);
-
-                    if (cont != -1) {
-                        wildfires.get(cont).add(new Wildfire(lat, lon, Integer.parseInt(row[3].replaceAll("\\s", ""))));
-                    }
+                    quakes.add(new Quake(lat, lon, Integer.parseInt(row[3].replaceAll("\\s", ""))));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -148,21 +151,14 @@ public class CSVWorker {
             }
         }
 
-        for (int i = 0; i < 5; i++) {
-            int len = i != EURASIA ? 200 : 400; // сколько элементов максимум может быть у одного континента
-            Collections.sort(wildfires.get(i), ((wildfire, t1) -> {
-                if (wildfire.getConfidence() == t1.getConfidence())
-                    return 0;
-                return wildfire.getConfidence() < t1.getConfidence() ? -1 : 1;
-            }));
-            for (int j = 0; j < len; j++) {
-                try {
-                    coordinates.add(wildfires.get(i).get(j));
-                } catch (IndexOutOfBoundsException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        Collections.sort(quakes, ((wildfire, t1) -> {
+            if (wildfire.getMagnitude() == t1.getMagnitude())
+                return 0;
+            return wildfire.getMagnitude() < t1.getMagnitude() ? -1 : 1;
+        }));
+
+        for (int i = 0; i < min(1200, quakes.size()); i++)
+            coordinates.add(quakes.get(i));
 
         return coordinates;
     }
