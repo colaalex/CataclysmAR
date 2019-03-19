@@ -16,6 +16,7 @@ public class QuakePin extends BasePin {
         setPosition(latitude, longitude);
     }
 
+    @Override
     public void setup(Context context, TransformableNode earth) {
         setTextureAndLocation(context, Color.YELLOW, earth);
     }

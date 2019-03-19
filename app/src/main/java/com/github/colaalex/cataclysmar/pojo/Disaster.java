@@ -8,7 +8,7 @@ public abstract class Disaster implements Serializable {
     protected float latitude;
     protected float longitude;
 
-    public Disaster(float latitude, float longitude) {
+    Disaster(float latitude, float longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }

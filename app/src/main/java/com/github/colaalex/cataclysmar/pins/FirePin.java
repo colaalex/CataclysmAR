@@ -6,8 +6,6 @@ import android.graphics.Color;
 import com.github.colaalex.cataclysmar.pojo.Wildfire;
 import com.google.ar.sceneform.ux.TransformableNode;
 
-import androidx.annotation.NonNull;
-
 public class FirePin extends BasePin{
 
     public FirePin(Wildfire wildfire) {
@@ -18,6 +16,7 @@ public class FirePin extends BasePin{
         setPosition(latitude, longitude);
     }
 
+    @Override
     public void setup(Context context, TransformableNode earth) {
         setTextureAndLocation(context, Color.RED, earth);
     }

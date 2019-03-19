@@ -6,6 +6,7 @@ import android.view.MotionEvent;
 import android.widget.TextView;
 
 import com.github.colaalex.cataclysmar.R;
+import com.github.colaalex.cataclysmar.pins.BasePin;
 import com.github.colaalex.cataclysmar.pins.FirePin;
 import com.github.colaalex.cataclysmar.pins.QuakePin;
 import com.github.colaalex.cataclysmar.pojo.Constants;
@@ -125,15 +126,16 @@ public class SceneActivity extends AppCompatActivity {
     private void setupPin(Disaster disaster) {
         Log.d("Setup Pin", "Started drawing pin");
 
-        if (disaster instanceof Wildfire) {
-            FirePin firePin = new FirePin((Wildfire) disaster);
-            firePin.setup(this, earth);
-            firePin.setOnTapListener((hitTestResult, motionEvent) -> ((TextView) cardRenderable.getView()).setText(firePin.toString()));
-        } else if (disaster instanceof Quake) {
-            QuakePin quakePin = new QuakePin((Quake) disaster);
-            quakePin.setup(this, earth);
-            quakePin.setOnTapListener((hitTestResult, motionEvent) -> ((TextView) cardRenderable.getView()).setText(quakePin.toString()));
-        }
+        BasePin pin;
+        if (disaster instanceof Wildfire)
+            pin = new FirePin((Wildfire) disaster);
+        else if (disaster instanceof Quake)
+            pin = new QuakePin((Quake) disaster);
+        else
+            throw new RuntimeException("Disaster is not an instance of either Fire or Quake");
+
+        pin.setup(this, earth);
+        pin.setOnTapListener((hitTestResult, motionEvent) -> ((TextView) cardRenderable.getView()).setText(pin.toString()));
 
         Log.d("Setup Pin", "Finished drawing pin");
     }
@@ -153,7 +155,7 @@ public class SceneActivity extends AppCompatActivity {
                     if (selectedDisaster == R.id.btnFire)
                         worker = new CSVWorker(getResources().openRawResource(R.raw.data7), Constants.FIRE);
                     else
-                        worker = new CSVWorker(getResources().openRawResource(R.raw.data24), Constants.QUAKE);
+                        worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
                     break;
                 case DAY:
                     if (selectedDisaster == R.id.btnFire)
@@ -165,7 +167,7 @@ public class SceneActivity extends AppCompatActivity {
                     if (selectedDisaster == R.id.btnFire)
                         worker = new CSVWorker(getResources().openRawResource(R.raw.data48), Constants.FIRE);
                     else
-                        worker = new CSVWorker(getResources().openRawResource(R.raw.data24), Constants.QUAKE);
+                        worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
                     break;
                 default:
                     throw new RuntimeException("Couldn't understand query");

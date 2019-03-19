@@ -12,13 +12,15 @@ import com.google.ar.sceneform.rendering.Renderable;
 import com.google.ar.sceneform.rendering.ShapeFactory;
 import com.google.ar.sceneform.ux.TransformableNode;
 
+import androidx.annotation.NonNull;
+
 import static com.github.colaalex.cataclysmar.pojo.Constants.RADIUS;
 import static java.lang.Math.PI;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static java.lang.Math.toRadians;
 
-abstract class BasePin extends Node {
+public abstract class BasePin extends Node {
 
     private Disaster disaster;
 
@@ -28,7 +30,7 @@ abstract class BasePin extends Node {
     private float y;
     private float z;
 
-    protected BasePin(Disaster disaster) {
+    BasePin(Disaster disaster) {
         this.disaster = disaster;
     }
 
@@ -58,7 +60,10 @@ abstract class BasePin extends Node {
         z = (float) (RADIUS * sin(theta) * cos(phi));
     }
 
+    public abstract void setup(Context context, TransformableNode earth);
+
     @Override
+    @NonNull
     public String toString() {
         return disaster.toString();
     }
