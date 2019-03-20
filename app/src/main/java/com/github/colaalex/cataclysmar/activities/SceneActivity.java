@@ -100,15 +100,16 @@ public class SceneActivity extends AppCompatActivity {
     private void passIntent() {
         int selectedTime = getIntent().getIntExtra("time", 0);
         int selectedDisaster = getIntent().getIntExtra("disaster", 0);
+        int maxLoad = getIntent().getIntExtra("maxLoad", 0);
         switch (selectedTime) {
             case R.id.btnDay:
-                setupPins(DAY, selectedDisaster);
+                setupPins(DAY, selectedDisaster, maxLoad);
                 break;
             case R.id.btnWeek:
-                setupPins(TWO_DAYS, selectedDisaster);
+                setupPins(TWO_DAYS, selectedDisaster, maxLoad);
                 break;
             case R.id.btnMonth:
-                setupPins(WEEK, selectedDisaster);
+                setupPins(WEEK, selectedDisaster, maxLoad);
                 break;
         }
     }
@@ -140,7 +141,7 @@ public class SceneActivity extends AppCompatActivity {
         Log.d("Setup Pin", "Finished drawing pin");
     }
 
-    private void setupPins(int period, int selectedDisaster) {
+    private void setupPins(int period, int selectedDisaster, int maxLoad) {
 
         Log.d("Setup Pins", "Method started");
 
@@ -173,7 +174,7 @@ public class SceneActivity extends AppCompatActivity {
                     throw new RuntimeException("Couldn't understand query");
             }
 
-            List<Disaster> coordinates = worker.read();
+            List<Disaster> coordinates = worker.read(maxLoad);
 
             for (Disaster disaster : coordinates) {
                 runOnUiThread(() -> setupPin(disaster));

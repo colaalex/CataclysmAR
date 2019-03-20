@@ -10,6 +10,7 @@
     <string name="fire">Пожар</string>
     <string name="quake">Землетрясение</string>
     <string name="start">Начать</string>
+    <string name="maxLoad">Максимальное количество меток: %1d</string>
     <string-array name="regions_array">
         <item>Весь мир</item>
     </string-array>

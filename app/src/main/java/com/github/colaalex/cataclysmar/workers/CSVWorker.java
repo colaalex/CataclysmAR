@@ -40,6 +40,8 @@ import static java.lang.Math.min;
 
 public class CSVWorker {
 
+    private int maxLoad = 1200;
+
     private static final int AFRICA = 0;
     private static final int AUSTRALIA = 1;
     private static final int EURASIA = 2;
@@ -54,7 +56,8 @@ public class CSVWorker {
         this.disaster = disaster;
     }
 
-    public List<Disaster> read() {
+    public List<Disaster> read(int maxLoad) {
+        this.maxLoad = maxLoad;
         switch (disaster) {
             case FIRE:
                 return readFire();
@@ -65,7 +68,7 @@ public class CSVWorker {
         }
     }
 
-    public List<Disaster> readFire() {
+    private List<Disaster> readFire() {
 
         SparseArray<List<Wildfire>> wildfires = new SparseArray<>(5);
         for (int i = 0; i < 5; i++)
@@ -103,7 +106,7 @@ public class CSVWorker {
         }
 
         for (int i = 0; i < 5; i++) {
-            int len = i != EURASIA ? 200 : 400; // сколько элементов максимум может быть у одного континента
+            int len = i != EURASIA ? maxLoad / 6 : maxLoad / 4; // сколько элементов максимум может быть у одного континента
             Collections.sort(wildfires.get(i), ((wildfire, t1) -> {
                 if (wildfire.getConfidence() == t1.getConfidence())
                     return 0;
@@ -157,7 +160,7 @@ public class CSVWorker {
             return wildfire.getMagnitude() < t1.getMagnitude() ? -1 : 1;
         }));
 
-        for (int i = 0; i < min(1200, quakes.size()); i++)
+        for (int i = 0; i < min(maxLoad, quakes.size()); i++)
             coordinates.add(quakes.get(i));
 
         return coordinates;
