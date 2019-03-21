@@ -166,7 +166,12 @@ public class SceneActivity extends AppCompatActivity {
                             worker = new CSVWorker(getResources().openRawResource(R.raw.data7), Constants.FIRE);
                         }
                     else
-                        worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
+                        try {
+                            InputStream inputStream = downloadWorker.getQuakeFile("week");
+                            worker = new CSVWorker(inputStream, Constants.QUAKE);
+                        } catch (IOException e) {
+                            worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
+                        }
                     break;
                 case DAY:
                     if (selectedDisaster == R.id.btnFire)
@@ -177,7 +182,12 @@ public class SceneActivity extends AppCompatActivity {
                             worker = new CSVWorker(getResources().openRawResource(R.raw.data24), Constants.FIRE);
                         }
                     else
-                        worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
+                        try {
+                            InputStream inputStream = downloadWorker.getQuakeFile("day");
+                            worker = new CSVWorker(inputStream, Constants.QUAKE);
+                        } catch (IOException e) {
+                            worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
+                        }
                     break;
                 case TWO_DAYS:
                     if (selectedDisaster == R.id.btnFire)
@@ -188,7 +198,13 @@ public class SceneActivity extends AppCompatActivity {
                             worker = new CSVWorker(getResources().openRawResource(R.raw.data48), Constants.FIRE);
                         }
                     else
-                        worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
+                        try {
+                            InputStream inputStream = downloadWorker.getQuakeFile("week");
+                            //week, потому что нет отдельного файла для двух дней
+                            worker = new CSVWorker(inputStream, Constants.QUAKE);
+                        } catch (IOException e) {
+                            worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
+                        }
                     break;
                 default:
                     throw new RuntimeException("Couldn't understand query");

@@ -40,6 +40,34 @@ public class DataDownloadWorker {
             if (response.body() != null) {
                 Log.d("Downloader", "Download successful");
                 //Log.d("Downloader output", response.body().string());
+                //обратиться к response.body можно только один раз, потом он закрывается
+                return new ByteArrayInputStream(response.body().string().getBytes());
+                //return response.body().byteStream();
+            }
+            else {
+                Log.e("Downloader", "Got null");
+                throw new IOException("Got null");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public InputStream getQuakeFile(String period) throws IOException {
+        Log.d("Downloader", "Downloader started");
+        OkHttpClient client = new OkHttpClient();
+        Log.d("Downloader url", String.format("https://firms.modaps.eosdis.nasa.gov/data/active_fire/c6/csv/MODIS_C6_Global_%s.csv", period));
+
+        Request request = new Request.Builder()
+                .url(String.format("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_%s.csv", period))
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            if (response.body() != null) {
+                Log.d("Downloader", "Download successful");
+                //Log.d("Downloader output", response.body().string());
+                //обратиться к response.body можно только один раз, потом он закрывается
                 return new ByteArrayInputStream(response.body().string().getBytes());
                 //return response.body().byteStream();
             }
