@@ -14,6 +14,7 @@ import com.github.colaalex.cataclysmar.pojo.Disaster;
 import com.github.colaalex.cataclysmar.pojo.Quake;
 import com.github.colaalex.cataclysmar.pojo.Wildfire;
 import com.github.colaalex.cataclysmar.workers.CSVWorker;
+import com.github.colaalex.cataclysmar.workers.DataDownloadWorker;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
 import com.google.ar.core.Plane;
@@ -29,6 +30,8 @@ import com.google.ar.sceneform.rendering.ViewRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -149,24 +152,41 @@ public class SceneActivity extends AppCompatActivity {
             Log.d("Setup Pins Run", "Started inner method");
 
             CSVWorker worker;
+            DataDownloadWorker downloadWorker = new DataDownloadWorker();
 
             switch (period) {
                 //TODO добавить данные по землетрясениям
                 case WEEK:
                     if (selectedDisaster == R.id.btnFire)
-                        worker = new CSVWorker(getResources().openRawResource(R.raw.data7), Constants.FIRE);
+                        try {
+                            InputStream inputStream = downloadWorker.getFireFile("7d");
+                            worker = new CSVWorker(inputStream, Constants.FIRE);
+                        } catch (IOException e) {
+                            //если не сможет скачать, будем использовать кэш
+                            worker = new CSVWorker(getResources().openRawResource(R.raw.data7), Constants.FIRE);
+                        }
                     else
                         worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
                     break;
                 case DAY:
                     if (selectedDisaster == R.id.btnFire)
-                        worker = new CSVWorker(getResources().openRawResource(R.raw.data24), Constants.FIRE);
+                        try {
+                            InputStream inputStream = downloadWorker.getFireFile("24h");
+                            worker = new CSVWorker(inputStream, Constants.FIRE);
+                        } catch (IOException e) {
+                            worker = new CSVWorker(getResources().openRawResource(R.raw.data24), Constants.FIRE);
+                        }
                     else
                         worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
                     break;
                 case TWO_DAYS:
                     if (selectedDisaster == R.id.btnFire)
-                        worker = new CSVWorker(getResources().openRawResource(R.raw.data48), Constants.FIRE);
+                        try {
+                            InputStream inputStream = downloadWorker.getFireFile("48h");
+                            worker = new CSVWorker(inputStream, Constants.FIRE);
+                        } catch (IOException e) {
+                            worker = new CSVWorker(getResources().openRawResource(R.raw.data48), Constants.FIRE);
+                        }
                     else
                         worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
                     break;

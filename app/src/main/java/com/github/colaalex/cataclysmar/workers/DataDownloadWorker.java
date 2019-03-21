@@ -1,0 +1,55 @@
+package com.github.colaalex.cataclysmar.workers;
+
+import android.util.Log;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+public class DataDownloadWorker {
+
+    public void getFile() {
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url("https://firms.modaps.eosdis.nasa.gov/data/active_fire/c6/csv/MODIS_C6_Global_24h.csv")
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            assert response.body() != null;
+            Log.d("Downloader", response.body().string());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public InputStream getFireFile(String period) throws IOException {
+        Log.d("Downloader", "Downloader started");
+        OkHttpClient client = new OkHttpClient();
+        Log.d("Downloader url", String.format("https://firms.modaps.eosdis.nasa.gov/data/active_fire/c6/csv/MODIS_C6_Global_%s.csv", period));
+
+        Request request = new Request.Builder()
+                .url(String.format("https://firms.modaps.eosdis.nasa.gov/data/active_fire/c6/csv/MODIS_C6_Global_%s.csv", period))
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            if (response.body() != null) {
+                Log.d("Downloader", "Download successful");
+                //Log.d("Downloader output", response.body().string());
+                return new ByteArrayInputStream(response.body().string().getBytes());
+                //return response.body().byteStream();
+            }
+            else {
+                Log.e("Downloader", "Got null");
+                throw new IOException("Got null");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+}
