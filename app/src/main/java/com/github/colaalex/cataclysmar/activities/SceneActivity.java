@@ -158,13 +158,14 @@ public class SceneActivity extends AppCompatActivity {
                 //TODO добавить данные по землетрясениям
                 case WEEK:
                     if (selectedDisaster == R.id.btnFire)
-                        try {
-                            InputStream inputStream = downloadWorker.getFireFile("7d");
-                            worker = new CSVWorker(inputStream, Constants.FIRE);
-                        } catch (IOException e) {
-                            //если не сможет скачать, будем использовать кэш
-                            worker = new CSVWorker(getResources().openRawResource(R.raw.data7), Constants.FIRE);
-                        }
+//                        try {
+//                            InputStream inputStream = downloadWorker.getFireFile("7d");
+//                            worker = new CSVWorker(inputStream, Constants.FIRE);
+//                        } catch (IOException e) {
+//                            //если не сможет скачать, будем использовать кэш
+//                            worker = new CSVWorker(getResources().openRawResource(R.raw.data7), Constants.FIRE);
+//                        }
+                        worker = new CSVWorker(getResources().openRawResource(R.raw.someout), Constants.FIRE);
                     else
                         try {
                             InputStream inputStream = downloadWorker.getQuakeFile("week");
@@ -175,12 +176,13 @@ public class SceneActivity extends AppCompatActivity {
                     break;
                 case DAY:
                     if (selectedDisaster == R.id.btnFire)
-                        try {
-                            InputStream inputStream = downloadWorker.getFireFile("24h");
-                            worker = new CSVWorker(inputStream, Constants.FIRE);
-                        } catch (IOException e) {
-                            worker = new CSVWorker(getResources().openRawResource(R.raw.data24), Constants.FIRE);
-                        }
+//                        try {
+//                            InputStream inputStream = downloadWorker.getFireFile("24h");
+//                            worker = new CSVWorker(inputStream, Constants.FIRE);
+//                        } catch (IOException e) {
+//                            worker = new CSVWorker(getResources().openRawResource(R.raw.data24), Constants.FIRE);
+//                        }
+                        worker = new CSVWorker(getResources().openRawResource(R.raw.someout), Constants.FIRE);
                     else
                         try {
                             InputStream inputStream = downloadWorker.getQuakeFile("day");
@@ -191,12 +193,13 @@ public class SceneActivity extends AppCompatActivity {
                     break;
                 case TWO_DAYS:
                     if (selectedDisaster == R.id.btnFire)
-                        try {
-                            InputStream inputStream = downloadWorker.getFireFile("48h");
-                            worker = new CSVWorker(inputStream, Constants.FIRE);
-                        } catch (IOException e) {
-                            worker = new CSVWorker(getResources().openRawResource(R.raw.data48), Constants.FIRE);
-                        }
+//                        try {
+//                            InputStream inputStream = downloadWorker.getFireFile("48h");
+//                            worker = new CSVWorker(inputStream, Constants.FIRE);
+//                        } catch (IOException e) {
+//                            worker = new CSVWorker(getResources().openRawResource(R.raw.data48), Constants.FIRE);
+//                        }
+                        worker = new CSVWorker(getResources().openRawResource(R.raw.someout), Constants.FIRE);
                     else
                         try {
                             InputStream inputStream = downloadWorker.getQuakeFile("week");
