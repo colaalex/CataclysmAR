@@ -18,6 +18,6 @@ public class QuakePin extends BasePin {
 
     @Override
     public void setup(Context context, TransformableNode earth) {
-        setTextureAndLocation(context, Color.YELLOW, earth);
+        setTextureAndLocation(context, Color.YELLOW, earth, 0.001f);
     }
 }

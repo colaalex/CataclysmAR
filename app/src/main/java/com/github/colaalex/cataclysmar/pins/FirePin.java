@@ -18,6 +18,7 @@ public class FirePin extends BasePin{
 
     @Override
     public void setup(Context context, TransformableNode earth) {
-        setTextureAndLocation(context, Color.RED, earth);
+        //setTextureAndLocation(context, Color.RED, earth, 0.001f);
+        setModelTextureAndLocation(context, earth, 0.001f);
     }
 }
