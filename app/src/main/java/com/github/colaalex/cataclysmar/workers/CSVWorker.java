@@ -3,6 +3,7 @@ package com.github.colaalex.cataclysmar.workers;
 import android.util.SparseArray;
 
 import com.github.colaalex.cataclysmar.pojo.Disaster;
+import com.github.colaalex.cataclysmar.pojo.FireCluster;
 import com.github.colaalex.cataclysmar.pojo.Quake;
 import com.github.colaalex.cataclysmar.pojo.Wildfire;
 
@@ -60,12 +61,49 @@ public class CSVWorker {
         this.maxLoad = maxLoad;
         switch (disaster) {
             case FIRE:
-                return readFire();
+                return readFireCluster();
             case QUAKE:
                 return readQuake();
             default:
                 return null;
         }
+    }
+
+    private List<Disaster> readFireCluster() {
+
+        List<Disaster> fireClusters = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+        try {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(",");
+
+                try {
+                    float lat = Float.parseFloat(row[0]);
+                    float lon = Float.parseFloat(row[1]);
+                    float size = Float.parseFloat(row[2]);
+
+                    fireClusters.add(new FireCluster(lat, lon, size));
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return fireClusters;
+
     }
 
     private List<Disaster> readFire() {

@@ -7,10 +7,12 @@ import android.widget.TextView;
 
 import com.github.colaalex.cataclysmar.R;
 import com.github.colaalex.cataclysmar.pins.BasePin;
+import com.github.colaalex.cataclysmar.pins.FireClusterPin;
 import com.github.colaalex.cataclysmar.pins.FirePin;
 import com.github.colaalex.cataclysmar.pins.QuakePin;
 import com.github.colaalex.cataclysmar.pojo.Constants;
 import com.github.colaalex.cataclysmar.pojo.Disaster;
+import com.github.colaalex.cataclysmar.pojo.FireCluster;
 import com.github.colaalex.cataclysmar.pojo.Quake;
 import com.github.colaalex.cataclysmar.pojo.Wildfire;
 import com.github.colaalex.cataclysmar.workers.CSVWorker;
@@ -135,8 +137,10 @@ public class SceneActivity extends AppCompatActivity {
             pin = new FirePin((Wildfire) disaster);
         else if (disaster instanceof Quake)
             pin = new QuakePin((Quake) disaster);
+        else if (disaster instanceof FireCluster)
+            pin = new FireClusterPin((FireCluster) disaster);
         else
-            throw new RuntimeException("Disaster is not an instance of either Fire or Quake");
+            throw new RuntimeException("Disaster is not an instance of suitable class");
 
         pin.setup(this, earth);
         pin.setOnTapListener((hitTestResult, motionEvent) -> ((TextView) cardRenderable.getView()).setText(pin.toString()));
@@ -155,7 +159,6 @@ public class SceneActivity extends AppCompatActivity {
             DataDownloadWorker downloadWorker = new DataDownloadWorker();
 
             switch (period) {
-                //TODO добавить данные по землетрясениям
                 case WEEK:
                     if (selectedDisaster == R.id.btnFire)
 //                        try {

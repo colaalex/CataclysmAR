@@ -61,7 +61,7 @@ public abstract class BasePin extends Node {
                     setLocalPosition(new Vector3(x, 0.5f * RADIUS + y, z));
                     //setLocalPosition(new Vector3(0, 0, 0));
                     setLocalRotation(rotationQuaternion);
-                    setLocalScale(new Vector3(0.05f, 0.05f, 0.05f));
+                    setLocalScale(new Vector3(radius, radius, radius));
                 })
                 .exceptionally(throwable -> {Log.e("BasePin", "Couldn't load renderable", throwable); return null;});
 
