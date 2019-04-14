@@ -27,6 +27,29 @@ public class DataDownloadWorker {
         }
     }
 
+    public InputStream getFireClusterFile(String period) throws IOException {
+        Log.d("Downloader", "Downloader started");
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url(String.format("http://ar.clxbox.host/api/fire/%s", period))
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            if (response.body() != null) {
+                Log.d("Downloader", "Download successful");
+                return new ByteArrayInputStream(response.body().string().getBytes());
+            }
+            else {
+                Log.e("Downloader", "Got null");
+                throw new IOException("Got null");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     public InputStream getFireFile(String period) throws IOException {
         Log.d("Downloader", "Downloader started");
         OkHttpClient client = new OkHttpClient();
