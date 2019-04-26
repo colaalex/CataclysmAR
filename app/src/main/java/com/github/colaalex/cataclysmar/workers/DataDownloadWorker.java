@@ -27,12 +27,12 @@ public class DataDownloadWorker {
         }
     }
 
-    public InputStream getFireClusterFile(String period) throws IOException {
+    public InputStream getClusterFile(String disaster, String period) throws IOException {
         Log.d("Downloader", "Downloader started");
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url(String.format("http://ar.clxbox.host/api/fire/%s", period))
+                .url(String.format("http://ar.clxbox.host/api/%s/%s", disaster, period))
                 .build();
 
         try (Response response = client.newCall(request).execute()) {

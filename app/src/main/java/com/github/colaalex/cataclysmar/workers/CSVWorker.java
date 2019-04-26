@@ -5,6 +5,7 @@ import android.util.SparseArray;
 import com.github.colaalex.cataclysmar.pojo.Disaster;
 import com.github.colaalex.cataclysmar.pojo.FireCluster;
 import com.github.colaalex.cataclysmar.pojo.Quake;
+import com.github.colaalex.cataclysmar.pojo.QuakeCluster;
 import com.github.colaalex.cataclysmar.pojo.Wildfire;
 
 import java.io.BufferedReader;
@@ -61,17 +62,17 @@ public class CSVWorker {
         this.maxLoad = maxLoad;
         switch (disaster) {
             case FIRE:
-                return readFireCluster();
+                return readCluster(FIRE);
             case QUAKE:
-                return readQuake();
+                return readCluster(QUAKE);
             default:
                 return null;
         }
     }
 
-    private List<Disaster> readFireCluster() {
+    private List<Disaster> readCluster(int disaster) {
 
-        List<Disaster> fireClusters = new ArrayList<>();
+        List<Disaster> clusters = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         try {
@@ -83,9 +84,16 @@ public class CSVWorker {
                 try {
                     float lat = Float.parseFloat(row[0]);
                     float lon = Float.parseFloat(row[1]);
-                    float size = Float.parseFloat(row[2]);
+                    float size = Float.parseFloat(row[2]) + 1.0f;
 
-                    fireClusters.add(new FireCluster(lat, lon, size));
+                    switch (disaster) {
+                        case FIRE:
+                            clusters.add(new FireCluster(lat, lon, size));
+                            break;
+                        case QUAKE:
+                            clusters.add(new QuakeCluster(lat, lon, size));
+                            break;
+                    }
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
                 }
@@ -102,7 +110,7 @@ public class CSVWorker {
             }
         }
 
-        return fireClusters;
+        return clusters;
 
     }
 

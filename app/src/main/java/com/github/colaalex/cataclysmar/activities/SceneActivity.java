@@ -9,11 +9,13 @@ import com.github.colaalex.cataclysmar.R;
 import com.github.colaalex.cataclysmar.pins.BasePin;
 import com.github.colaalex.cataclysmar.pins.FireClusterPin;
 import com.github.colaalex.cataclysmar.pins.FirePin;
+import com.github.colaalex.cataclysmar.pins.QuakeClusterPin;
 import com.github.colaalex.cataclysmar.pins.QuakePin;
 import com.github.colaalex.cataclysmar.pojo.Constants;
 import com.github.colaalex.cataclysmar.pojo.Disaster;
 import com.github.colaalex.cataclysmar.pojo.FireCluster;
 import com.github.colaalex.cataclysmar.pojo.Quake;
+import com.github.colaalex.cataclysmar.pojo.QuakeCluster;
 import com.github.colaalex.cataclysmar.pojo.Wildfire;
 import com.github.colaalex.cataclysmar.workers.CSVWorker;
 import com.github.colaalex.cataclysmar.workers.DataDownloadWorker;
@@ -139,6 +141,8 @@ public class SceneActivity extends AppCompatActivity {
             pin = new QuakePin((Quake) disaster);
         else if (disaster instanceof FireCluster)
             pin = new FireClusterPin((FireCluster) disaster);
+        else if (disaster instanceof QuakeCluster)
+            pin = new QuakeClusterPin((QuakeCluster) disaster);
         else
             throw new RuntimeException("Disaster is not an instance of suitable class");
 
@@ -162,7 +166,7 @@ public class SceneActivity extends AppCompatActivity {
                 case WEEK:
                     if (selectedDisaster == R.id.btnFire)
                         try {
-                            InputStream inputStream = downloadWorker.getFireClusterFile("7");
+                            InputStream inputStream = downloadWorker.getClusterFile("fire", "7");
                             worker = new CSVWorker(inputStream, Constants.FIRE);
                         } catch (IOException e) {
                             //если не сможет скачать, будем использовать кэш
@@ -171,7 +175,7 @@ public class SceneActivity extends AppCompatActivity {
                         //worker = new CSVWorker(getResources().openRawResource(R.raw.someout), Constants.FIRE);
                     else
                         try {
-                            InputStream inputStream = downloadWorker.getQuakeFile("week");
+                            InputStream inputStream = downloadWorker.getClusterFile("quake", "30");
                             worker = new CSVWorker(inputStream, Constants.QUAKE);
                         } catch (IOException e) {
                             worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
@@ -180,7 +184,7 @@ public class SceneActivity extends AppCompatActivity {
                 case DAY:
                     if (selectedDisaster == R.id.btnFire)
                         try {
-                            InputStream inputStream = downloadWorker.getFireClusterFile("24");
+                            InputStream inputStream = downloadWorker.getClusterFile("fire", "24");
                             worker = new CSVWorker(inputStream, Constants.FIRE);
                         } catch (IOException e) {
                             worker = new CSVWorker(getResources().openRawResource(R.raw.someout), Constants.FIRE);
@@ -188,7 +192,7 @@ public class SceneActivity extends AppCompatActivity {
                         //worker = new CSVWorker(getResources().openRawResource(R.raw.someout), Constants.FIRE);
                     else
                         try {
-                            InputStream inputStream = downloadWorker.getQuakeFile("day");
+                            InputStream inputStream = downloadWorker.getClusterFile("quake", "24");
                             worker = new CSVWorker(inputStream, Constants.QUAKE);
                         } catch (IOException e) {
                             worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
@@ -197,7 +201,7 @@ public class SceneActivity extends AppCompatActivity {
                 case TWO_DAYS:
                     if (selectedDisaster == R.id.btnFire)
                         try {
-                            InputStream inputStream = downloadWorker.getFireFile("48");
+                            InputStream inputStream = downloadWorker.getClusterFile("fire", "48");
                             worker = new CSVWorker(inputStream, Constants.FIRE);
                         } catch (IOException e) {
                             worker = new CSVWorker(getResources().openRawResource(R.raw.someout), Constants.FIRE);
@@ -205,7 +209,7 @@ public class SceneActivity extends AppCompatActivity {
                         //worker = new CSVWorker(getResources().openRawResource(R.raw.someout), Constants.FIRE);
                     else
                         try {
-                            InputStream inputStream = downloadWorker.getQuakeFile("week");
+                            InputStream inputStream = downloadWorker.getClusterFile("quake", "7");
                             //week, потому что нет отдельного файла для двух дней
                             worker = new CSVWorker(inputStream, Constants.QUAKE);
                         } catch (IOException e) {

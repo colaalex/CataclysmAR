@@ -38,11 +38,15 @@ public abstract class BasePin extends Node {
     }
 
     void setTextureAndLocation(Context context, int color, TransformableNode earth, float radius) {
+        Quaternion q1 = Quaternion.axisAngle(Vector3.back(), disaster.getLatitude() + 90);
+        Quaternion q2 = Quaternion.axisAngle(Vector3.right(), disaster.getLongitude() + 180);
+        rotationQuaternion = Quaternion.multiply(q1, q2);
+
         MaterialFactory.makeOpaqueWithColor(context, new Color(color))
                 .thenAccept(
                         material -> {
                             Renderable pinRenderable =
-                                    ShapeFactory.makeCylinder(radius, 0.01f, Vector3.zero(), material);
+                                    ShapeFactory.makeCylinder(0.001f, radius, Vector3.zero(), material);
                             setRenderable(pinRenderable);
                             setParent(earth);
                             setLocalPosition(new Vector3(x, 0.5f * RADIUS + y, z));
