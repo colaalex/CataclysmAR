@@ -2,7 +2,6 @@ package com.github.colaalex.cataclysmar.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 import com.github.colaalex.cataclysmar.R;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -93,34 +91,34 @@ public class StartActivity extends AppCompatActivity {
     }
 
     private void toggleTime(int buttonId) {
-        btnDay.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonDeactivated), PorterDuff.Mode.MULTIPLY);
-        btnWeek.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonDeactivated), PorterDuff.Mode.MULTIPLY);
-        btnMonth.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonDeactivated), PorterDuff.Mode.MULTIPLY);
+        btnDay.setBackgroundColor(getColor(R.color.buttonDeactivated));
+        btnWeek.setBackgroundColor(getColor(R.color.buttonDeactivated));
+        btnMonth.setBackgroundColor(getColor(R.color.buttonDeactivated));
         selectedTime = buttonId;
         switch (buttonId) {
             case R.id.btnDay:
-                btnDay.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonActivated), PorterDuff.Mode.MULTIPLY);
+                btnDay.setBackgroundColor(getColor(R.color.buttonActivated));
                 break;
             case R.id.btnWeek:
-                btnWeek.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonActivated), PorterDuff.Mode.MULTIPLY);
+                btnWeek.setBackgroundColor(getColor(R.color.buttonActivated));
                 break;
             case R.id.btnMonth:
-                btnMonth.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonActivated), PorterDuff.Mode.MULTIPLY);
+                btnMonth.setBackgroundColor(getColor(R.color.buttonActivated));
                 break;
         }
     }
 
     @SuppressWarnings("ConstantConditions")
     private void toggleDisaster(int buttonId) {
-        btnFire.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonDeactivated), PorterDuff.Mode.MULTIPLY);
-        btnQuake.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonDeactivated), PorterDuff.Mode.MULTIPLY);
+        btnFire.setBackgroundColor(getColor(R.color.buttonDeactivated));
+        btnQuake.setBackgroundColor(getColor(R.color.buttonDeactivated));
         selectedDisaster = buttonId;
         switch (buttonId) {
             case R.id.btnFire:
-                btnFire.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonActivated), PorterDuff.Mode.MULTIPLY);
+                btnFire.setBackgroundColor(getColor(R.color.buttonActivated));
                 break;
             case R.id.btnQuake:
-                btnQuake.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.buttonActivated), PorterDuff.Mode.MULTIPLY);
+                btnQuake.setBackgroundColor(getColor(R.color.buttonActivated));
                 break;
         }
     }
