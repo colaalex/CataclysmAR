@@ -5,7 +5,11 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
+import com.github.colaalex.cataclysmar.App;
 import com.github.colaalex.cataclysmar.R;
+import com.github.colaalex.cataclysmar.database.AppDatabase;
+import com.github.colaalex.cataclysmar.database.DisasterDao;
+import com.github.colaalex.cataclysmar.database.DisasterEntity;
 import com.github.colaalex.cataclysmar.pins.BasePin;
 import com.github.colaalex.cataclysmar.pins.FireClusterPin;
 import com.github.colaalex.cataclysmar.pins.FirePin;
@@ -34,8 +38,9 @@ import com.google.ar.sceneform.rendering.ViewRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
-import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -159,8 +164,12 @@ public class SceneActivity extends AppCompatActivity {
         new Thread(() -> {
             Log.d("Setup Pins Run", "Started inner method");
 
-            CSVWorker worker;
+            CSVWorker worker = null;
+            String disType = "";
             DataDownloadWorker downloadWorker = new DataDownloadWorker();
+            long startTime = 0;
+
+            boolean offlineFlag = false;
 
             switch (period) {
                 case WEEK:
@@ -168,17 +177,24 @@ public class SceneActivity extends AppCompatActivity {
                         try {
                             InputStream inputStream = downloadWorker.getClusterFile("fire", "7");
                             worker = new CSVWorker(inputStream, Constants.FIRE);
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                             //если не сможет скачать, будем использовать кэш
-                            worker = new CSVWorker(getResources().openRawResource(R.raw.someout), Constants.FIRE);
+                            offlineFlag = true;
+                            disType = "fire";
+                            Calendar cal = Calendar.getInstance();
+                            cal.add(Calendar.DAY_OF_YEAR, -7);
+                            startTime = cal.getTimeInMillis();
                         }
-                        //worker = new CSVWorker(getResources().openRawResource(R.raw.someout), Constants.FIRE);
                     else
                         try {
                             InputStream inputStream = downloadWorker.getClusterFile("quake", "30");
                             worker = new CSVWorker(inputStream, Constants.QUAKE);
-                        } catch (IOException e) {
-                            worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
+                        } catch (Exception e) {
+                            offlineFlag = true;
+                            disType = "quake";
+                            Calendar cal = Calendar.getInstance();
+                            cal.add(Calendar.DAY_OF_YEAR, -30);
+                            startTime = cal.getTimeInMillis();
                         }
                     break;
                 case DAY:
@@ -186,16 +202,23 @@ public class SceneActivity extends AppCompatActivity {
                         try {
                             InputStream inputStream = downloadWorker.getClusterFile("fire", "24");
                             worker = new CSVWorker(inputStream, Constants.FIRE);
-                        } catch (IOException e) {
-                            worker = new CSVWorker(getResources().openRawResource(R.raw.someout), Constants.FIRE);
+                        } catch (Exception e) {
+                            offlineFlag = true;
+                            disType = "fire";
+                            Calendar cal = Calendar.getInstance();
+                            cal.add(Calendar.DAY_OF_YEAR, -1);
+                            startTime = cal.getTimeInMillis();
                         }
-                        //worker = new CSVWorker(getResources().openRawResource(R.raw.someout), Constants.FIRE);
                     else
                         try {
                             InputStream inputStream = downloadWorker.getClusterFile("quake", "24");
                             worker = new CSVWorker(inputStream, Constants.QUAKE);
-                        } catch (IOException e) {
-                            worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
+                        } catch (Exception e) {
+                            offlineFlag = true;
+                            disType = "quake";
+                            Calendar cal = Calendar.getInstance();
+                            cal.add(Calendar.DAY_OF_YEAR, -1);
+                            startTime = cal.getTimeInMillis();
                         }
                     break;
                 case TWO_DAYS:
@@ -203,26 +226,48 @@ public class SceneActivity extends AppCompatActivity {
                         try {
                             InputStream inputStream = downloadWorker.getClusterFile("fire", "48");
                             worker = new CSVWorker(inputStream, Constants.FIRE);
-                        } catch (IOException e) {
-                            worker = new CSVWorker(getResources().openRawResource(R.raw.someout), Constants.FIRE);
+                        } catch (Exception e) {
+                            offlineFlag = true;
+                            disType = "fire";
+                            Calendar cal = Calendar.getInstance();
+                            cal.add(Calendar.DAY_OF_YEAR, -2);
+                            startTime = cal.getTimeInMillis();
                         }
-                        //worker = new CSVWorker(getResources().openRawResource(R.raw.someout), Constants.FIRE);
                     else
                         try {
                             InputStream inputStream = downloadWorker.getClusterFile("quake", "7");
                             //week, потому что нет отдельного файла для двух дней
                             worker = new CSVWorker(inputStream, Constants.QUAKE);
-                        } catch (IOException e) {
-                            worker = new CSVWorker(getResources().openRawResource(R.raw.quake24), Constants.QUAKE);
+                        } catch (Exception e) {
+                            offlineFlag = true;
+                            disType = "quake";
+                            Calendar cal = Calendar.getInstance();
+                            cal.add(Calendar.DATE, -7);
+                            startTime = cal.getTimeInMillis();
                         }
                     break;
                 default:
                     throw new RuntimeException("Couldn't understand query");
             }
 
-            List<Disaster> coordinates = worker.read(maxLoad);
+            List<Disaster> coordinates;
+            if (!offlineFlag) {
+                coordinates = worker.read(maxLoad);
+            } else {
+                AppDatabase db = App.getInstance().getDatabase();
+                DisasterDao disasterDao = db.disasterDao();
+                List<DisasterEntity> entities = disasterDao.getDisastersByType(disType, startTime / 1000, System.currentTimeMillis() / 1000);
+                coordinates = new ArrayList<>();
+                for (DisasterEntity entity : entities) {
+                    if (entity.disasterType.equals("fire"))
+                        coordinates.add(new FireCluster(entity.latitude, entity.longitude, entity.size));
+                    else if (entity.disasterType.equals("quake"))
+                        coordinates.add(new QuakeCluster(entity.latitude, entity.longitude, entity.size));
+                }
+            }
 
             for (Disaster disaster : coordinates) {
+                Log.d("Coordinates length:", String.valueOf(coordinates.size()));
                 runOnUiThread(() -> setupPin(disaster));
                 try {
                     Thread.sleep(16);

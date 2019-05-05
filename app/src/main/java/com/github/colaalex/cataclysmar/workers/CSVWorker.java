@@ -2,6 +2,10 @@ package com.github.colaalex.cataclysmar.workers;
 
 import android.util.SparseArray;
 
+import com.github.colaalex.cataclysmar.App;
+import com.github.colaalex.cataclysmar.database.AppDatabase;
+import com.github.colaalex.cataclysmar.database.DisasterDao;
+import com.github.colaalex.cataclysmar.database.DisasterEntity;
 import com.github.colaalex.cataclysmar.pojo.Disaster;
 import com.github.colaalex.cataclysmar.pojo.FireCluster;
 import com.github.colaalex.cataclysmar.pojo.Quake;
@@ -53,9 +57,14 @@ public class CSVWorker {
     private InputStream inputStream;
     private int disaster;
 
+    private DisasterDao disasterDao;
+
     public CSVWorker(InputStream inputStream, int disaster) {
         this.inputStream = inputStream;
         this.disaster = disaster;
+
+        AppDatabase db = App.getInstance().getDatabase();
+        disasterDao = db.disasterDao();
     }
 
     public List<Disaster> read(int maxLoad) {
@@ -85,15 +94,26 @@ public class CSVWorker {
                     float lat = Float.parseFloat(row[0]);
                     float lon = Float.parseFloat(row[1]);
                     float size = Float.parseFloat(row[2]) + 1.0f;
+                    long datetime = Long.parseLong(row[3].substring(0, row[3].indexOf(".")));
+
+                    DisasterEntity entity = new DisasterEntity();
+                    entity.datetime = datetime;
+                    entity.latitude = lat;
+                    entity.longitude = lon;
+                    entity.size = size;
 
                     switch (disaster) {
                         case FIRE:
                             clusters.add(new FireCluster(lat, lon, size));
+                            entity.disasterType = "fire";
                             break;
                         case QUAKE:
                             clusters.add(new QuakeCluster(lat, lon, size));
+                            entity.disasterType = "quake";
                             break;
                     }
+
+                    disasterDao.insertDisaster(entity);
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
                 }

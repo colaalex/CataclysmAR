@@ -44,7 +44,7 @@ public class DataDownloadWorker {
                 Log.e("Downloader", "Got null");
                 throw new IOException("Got null");
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             throw e;
         }
