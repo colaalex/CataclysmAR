@@ -112,16 +112,15 @@ public class SceneActivity extends AppCompatActivity {
     private void passIntent() {
         int selectedTime = getIntent().getIntExtra("time", 0);
         int selectedDisaster = getIntent().getIntExtra("disaster", 0);
-        int maxLoad = getIntent().getIntExtra("maxLoad", 0);
         switch (selectedTime) {
             case R.id.btnDay:
-                setupPins(DAY, selectedDisaster, maxLoad);
+                setupPins(DAY, selectedDisaster);
                 break;
             case R.id.btnWeek:
-                setupPins(TWO_DAYS, selectedDisaster, maxLoad);
+                setupPins(TWO_DAYS, selectedDisaster);
                 break;
             case R.id.btnMonth:
-                setupPins(WEEK, selectedDisaster, maxLoad);
+                setupPins(WEEK, selectedDisaster);
                 break;
         }
     }
@@ -157,7 +156,7 @@ public class SceneActivity extends AppCompatActivity {
         Log.d("Setup Pin", "Finished drawing pin");
     }
 
-    private void setupPins(int period, int selectedDisaster, int maxLoad) {
+    private void setupPins(int period, int selectedDisaster) {
 
         Log.d("Setup Pins", "Method started");
 
@@ -252,7 +251,7 @@ public class SceneActivity extends AppCompatActivity {
 
             List<Disaster> coordinates;
             if (!offlineFlag) {
-                coordinates = worker.read(maxLoad);
+                coordinates = worker.read();
             } else {
                 AppDatabase db = App.getInstance().getDatabase();
                 DisasterDao disasterDao = db.disasterDao();
