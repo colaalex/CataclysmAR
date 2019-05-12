@@ -20,6 +20,6 @@ public class FireCluster extends Disaster {
     @NonNull
     @Override
     public String toString() {
-        return String.format(Locale.getDefault(), "Latitude %f\nLongitude %f", latitude, longitude);
+        return String.format(Locale.getDefault(), "Latitude %f\nLongitude %f\nSize %f", latitude, longitude, size);
     }
 }

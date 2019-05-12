@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.SeekBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.github.colaalex.cataclysmar.R;
 
@@ -20,8 +18,8 @@ public class StartActivity extends AppCompatActivity {
     Button btnMonth;
     Button btnFire;
     Button btnQuake;
-    TextView tvMaxLoad;
-    SeekBar sbMaxLoad;
+//    TextView tvMaxLoad;
+//    SeekBar sbMaxLoad;
 
     int selectedTime; // button ids are used
     int selectedDisaster;
@@ -54,29 +52,29 @@ public class StartActivity extends AppCompatActivity {
         btnQuake = findViewById(R.id.btnQuake);
         btnQuake.setOnClickListener(view -> toggleDisaster(R.id.btnQuake));
 
-        tvMaxLoad = findViewById(R.id.tvMaxLoad);
-
-        sbMaxLoad = findViewById(R.id.sbMaxLoad);
-        sbMaxLoad.setMax(60);
-        sbMaxLoad.setProgress(10);
-        tvMaxLoad.setText(String.format(getResources().getString(R.string.maxLoad), sbMaxLoad.getProgress() * 100));
-        sbMaxLoad.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tvMaxLoad.setText(String.format(getResources().getString(R.string.maxLoad), progress * 100));
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
+//        tvMaxLoad = findViewById(R.id.tvMaxLoad);
+//
+//        sbMaxLoad = findViewById(R.id.sbMaxLoad);
+//        sbMaxLoad.setMax(60);
+//        sbMaxLoad.setProgress(10);
+//        tvMaxLoad.setText(String.format(getResources().getString(R.string.maxLoad), sbMaxLoad.getProgress() * 100));
+//        sbMaxLoad.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+//            @Override
+//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+//                tvMaxLoad.setText(String.format(getResources().getString(R.string.maxLoad), progress * 100));
+//
+//            }
+//
+//            @Override
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//
+//            }
+//
+//            @Override
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//
+//            }
+//        });
 
         Button startButton = findViewById(R.id.btnStart);
         startButton.setOnClickListener(view -> {
@@ -85,7 +83,7 @@ public class StartActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), SceneActivity.class);
             intent.putExtra("time", selectedTime);
             intent.putExtra("disaster", selectedDisaster);
-            intent.putExtra("maxLoad", sbMaxLoad.getProgress() * 100);
+            intent.putExtra("maxLoad", 1000);
             startActivity(intent);
         });
     }

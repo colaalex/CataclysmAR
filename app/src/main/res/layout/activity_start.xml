@@ -175,44 +175,44 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:id="@+id/tvMaxLoad"
-                style="@style/text"
-                android:layout_marginStart="8dp"
-                android:text="@string/maxLoad"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardDisaster" />
+            <!--<TextView-->
+            <!--android:id="@+id/tvMaxLoad"-->
+            <!--style="@style/text"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:text="@string/maxLoad"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/cardDisaster" />-->
 
 
-
-            <SeekBar
-                android:id="@+id/sbMaxLoad"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/btnStart"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvMaxLoad"
-                />
+            <!--<SeekBar-->
+            <!--android:id="@+id/sbMaxLoad"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--app:layout_constraintBottom_toTopOf="@+id/btnStart"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/tvMaxLoad"-->
+            <!--/>-->
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnStart"
                 android:layout_width="240dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="65dp"
+                android:layout_marginTop="48dp"
+                android:elevation="4dp"
+                android:letterSpacing="0"
                 android:text="@string/start"
                 android:textAllCaps="false"
-                android:letterSpacing="0"
-                android:elevation="4dp"
                 android:textColor="#000"
                 android:textSize="19sp"
                 app:backgroundTint="@color/buttonStart"
                 app:cornerRadius="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardDisaster" />
 
