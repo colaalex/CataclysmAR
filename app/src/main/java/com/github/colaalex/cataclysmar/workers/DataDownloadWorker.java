@@ -17,7 +17,7 @@ public class DataDownloadWorker {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url(String.format("http://ar.clxbox.host/api/%s/%s", disaster, period))
+                .url(String.format("https://ar.clxbox.host/api/%s/%s", disaster, period))
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
